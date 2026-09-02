@@ -1,21 +1,23 @@
 # Nana Mission Board
 
+Final files:
+
+- `Nana-Mission-Board.pptx`: editable source.
+- `Nana-Mission-Board.pdf`: visually faithful shareable export.
+
 ## Regenerate the PPTX
 
 Run this exact command from the repository root:
 
 ```sh
-node docs/mission-board/src/build.mjs
+node mission-board/source/build.mjs
 ```
 
-The command writes `docs/mission-board/Nana-Mission-Board.pptx`, imports the
-PPTX again to create `docs/mission-board/preview/slides/`, and writes the
-artifact-tool source renders under `docs/mission-board/preview/artifact-tool/`.
+The command writes `mission-board/Nana-Mission-Board.pptx`. The included PDF is
+the shareable export validated against all 14 slides.
 
-The generator depends on `@oai/artifact-tool`. A working copy is vendored under
-`docs/mission-board/src/node_modules/` because this private package is not
-published on npm and `npm view @oai/artifact-tool` returns 404. No package
-installation step is required.
+The generator depends on OpenAI's internal `@oai/artifact-tool` runtime and is
+included for layout traceability. Normal PowerPoint editing does not require it.
 
 PowerPoint does not provide a CSS style fallback chain. Fredoka and Nunito must
 be installed locally for the PPTX to render with Nana's brand typography. Get

@@ -4,11 +4,19 @@ Shared source of truth for refining Nana's external pitch.
 
 This repository contains the current deck, product model, mission board, landing visual system and original assets. It is intentionally separate from the application repository so the deck can evolve without product-code noise.
 
+## Quick downloads
+
+The three final PDFs are duplicated at the repository root so nobody has to search through the working folders:
+
+1. [`NANA-01-PITCH-DECK.pdf`](NANA-01-PITCH-DECK.pdf)
+2. [`NANA-02-BUSINESS-MODEL.pdf`](NANA-02-BUSINESS-MODEL.pdf)
+3. [`NANA-03-MISSION-BOARD.pdf`](NANA-03-MISSION-BOARD.pdf)
+
 ## Start here
 
 1. Read [`strategy/MASTER-CONTEXT.md`](strategy/MASTER-CONTEXT.md).
 2. Open [`strategy/PITCH-REFINEMENT-BRIEF.md`](strategy/PITCH-REFINEMENT-BRIEF.md).
-3. Review [`deck/current/Nana-Pitch-Deck-v3.pdf`](deck/current/Nana-Pitch-Deck-v3.pdf).
+3. Review [`NANA-01-PITCH-DECK.pdf`](NANA-01-PITCH-DECK.pdf).
 4. Edit [`deck/current/Nana-Pitch-Deck-v3.pptx`](deck/current/Nana-Pitch-Deck-v3.pptx).
 5. Use [`pitch/PITCH-SCRIPT.md`](pitch/PITCH-SCRIPT.md) to preserve the spoken narrative.
 6. Use the Mission Board when a product or brand decision is unclear.
