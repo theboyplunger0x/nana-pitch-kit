@@ -24,7 +24,7 @@ This repository contains the current deck, product model, mission board, landing
 | `strategy/` | Product/business model, newest conceptual update and pitch brief. |
 | `pitch/` | Spoken pitch script aligned to the current deck. |
 | `brand/` | Brand voice and visual rules distilled from the landing and mission board. |
-| `assets/` | Logos, Nani, screenshots, social graphics, video and team photos. |
+| `assets/` | Logos, reusable landing bubbles, Nani, screenshots, social graphics, video and team photos. |
 | `landing-reference/` | Components, CSS and metadata assets from the hybrid landing. |
 
 ## Current product definition

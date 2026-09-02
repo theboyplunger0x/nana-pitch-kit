@@ -5,9 +5,16 @@ import { FileBlob, Presentation, PresentationFile } from "@oai/artifact-tool";
 
 const SOURCE_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(SOURCE_DIR, "../..");
-const RENDERED_DIR = path.join(ROOT, "build/preview/artifact-tool");
-const PPTX_RENDERED_DIR = path.join(ROOT, "deck/current/preview");
-const OUT = path.join(ROOT, "deck/current/Nana-Pitch-Deck-v2.pptx");
+const RENDERED_DIR = path.join(ROOT, "tmp/deck-v2/rendered/artifact-tool");
+const PPTX_RENDERED_DIR = path.join(ROOT, "tmp/deck-v2/rendered/pptx");
+const OUT = path.join(ROOT, "docs/deck/Nana-Pitch-Deck-v2.pptx");
+const BRAND_BUBBLE = path.join(ROOT, "assets/bubbles/nana-glass-bubble-deck.png");
+const brandBubbleBuffer = await fs.readFile(BRAND_BUBBLE);
+const BRAND_BUBBLE_BYTES = new Uint8Array(
+  brandBubbleBuffer.buffer,
+  brandBubbleBuffer.byteOffset,
+  brandBubbleBuffer.byteLength,
+);
 
 const C = {
   cream: "#F6F1E8",
@@ -107,44 +114,23 @@ function addGrid(slide, options = {}) {
   }
 }
 
-function addGlossOrb(slide, x, y, size, palette = "purple") {
-  const colors = palette === "purple"
-    ? [C.lilacDeep, C.lavender, C.purple]
-    : palette === "cream"
-      ? [C.white, C.cream, C.gold]
-      : [C.mint, "#A9E0C3", C.green];
-  addShape(slide, "ellipse", { left: x, top: y, width: size, height: size }, colors[0], {
-    line: { style: "solid", fill: C.line, width: 1 },
-    shadow: "shadow-md",
+function addGlossOrb(slide, x, y, size) {
+  return slide.images.add({
+    blob: BRAND_BUBBLE_BYTES,
+    contentType: "image/png",
+    alt: "Nana translucent lavender glass bubble",
+    prompt: "A soft translucent lavender glass sphere with a milky upper-left highlight and subtle purple inset shadow, matching Nana's landing-page bubble texture.",
+    fit: "contain",
+    position: { left: x, top: y, width: size, height: size },
   });
-  addShape(slide, "ellipse", {
-    left: x + size * 0.23,
-    top: y + size * 0.23,
-    width: size * 0.64,
-    height: size * 0.64,
-  }, colors[1]);
-  addShape(slide, "ellipse", {
-    left: x + size * 0.49,
-    top: y + size * 0.5,
-    width: size * 0.34,
-    height: size * 0.34,
-  }, colors[2]);
-  addShape(slide, "ellipse", {
-    left: x + size * 0.18,
-    top: y + size * 0.15,
-    width: size * 0.16,
-    height: size * 0.16,
-  }, C.white);
 }
 
 function addBase(slide, page, options = {}) {
   slide.background.fill = options.background ?? C.paper;
   if (options.grid !== false) addGrid(slide, { color: options.gridColor ?? C.grid });
   if (options.orbs !== false) {
-    addGlossOrb(slide, 1120, 0, 160, "purple");
-    addShape(slide, "ellipse", { left: 0, top: 600, width: 120, height: 120 }, C.lilac, {
-      line: { style: "solid", fill: C.line, width: 1 },
-    });
+    addGlossOrb(slide, 1090, 0, 190);
+    addGlossOrb(slide, 0, 580, 140);
   }
   addText(slide, "nana", { left: M, top: 30, width: 128, height: 38 }, {
     fontSize: 29,
@@ -264,11 +250,9 @@ function addArrow(slide, x, y, width, color = C.purple) {
   const slide = presentation.slides.add();
   slide.background.fill = C.cream;
   addGrid(slide, { left: 540, top: 0, width: 740, height: H });
-  addGlossOrb(slide, 950, 0, 330, "purple");
-  addGlossOrb(slide, 0, 570, 150, "cream");
-  addShape(slide, "ellipse", { left: 658, top: 92, width: 525, height: 525 }, C.lilac, {
-    line: { style: "solid", fill: C.line, width: 1 },
-  });
+  addGlossOrb(slide, 950, 0, 330);
+  addGlossOrb(slide, 0, 570, 150);
+  addGlossOrb(slide, 640, 72, 570);
   addText(slide, "nana", { left: M, top: 42, width: 170, height: 55 }, {
     fontSize: 43,
     bold: true,
@@ -346,10 +330,8 @@ function addArrow(slide, x, y, width, color = C.purple) {
     });
   }
 
-  addShape(slide, "ellipse", { left: 770, top: 230, width: 370, height: 370 }, C.lilac, {
-    line: { style: "solid", fill: C.lavender, width: 1 },
-  });
-  addGlossOrb(slide, 1010, 193, 115, "purple");
+  addGlossOrb(slide, 750, 210, 410);
+  addGlossOrb(slide, 1010, 193, 115);
   addText(slide, "The missing option", { left: 838, top: 300, width: 240, height: 30 }, {
     fontSize: 18,
     bold: true,
@@ -429,10 +411,10 @@ function addArrow(slide, x, y, width, color = C.purple) {
   }, { fontSize: 22, color: C.muted });
 
   const screens = [
-    ["assets/landing/agent-command.jpg", "1", "ASK"],
-    ["assets/landing/agent-confirmation.jpg", "2", "PREPARE"],
-    ["assets/landing/agent-confirmed.jpg", "3", "CONFIRM"],
-    ["assets/landing/agent-home.jpg", "4", "SETTLE"],
+    ["app/apps/nana-wallet/src/assets/landing/agent-command.jpg", "1", "ASK"],
+    ["app/apps/nana-wallet/src/assets/landing/agent-confirmation.jpg", "2", "PREPARE"],
+    ["app/apps/nana-wallet/src/assets/landing/agent-confirmed.jpg", "3", "CONFIRM"],
+    ["app/apps/nana-wallet/src/assets/landing/agent-home.jpg", "4", "SETTLE"],
   ];
   for (let i = 0; i < screens.length; i += 1) {
     const x = 96 + i * 288;
@@ -508,7 +490,7 @@ function addArrow(slide, x, y, width, color = C.purple) {
     height: 105,
   }, { fontSize: 21, color: C.muted });
 
-  addGlossOrb(slide, 566, 332, 148, "purple");
+  addGlossOrb(slide, 566, 332, 148);
   addText(slide, "trusted\nrelationship", { left: 580, top: 388, width: 120, height: 50 }, {
     fontSize: 14,
     bold: true,
@@ -574,7 +556,7 @@ function addArrow(slide, x, y, width, color = C.purple) {
     width: 225,
     height: 48,
   }, { fontSize: 18, color: C.muted, align: "center" });
-  addGlossOrb(slide, 1025, 424, 105, "purple");
+  addGlossOrb(slide, 1025, 424, 105);
   addFooter(slide);
   addNotes(slide, [
     "docs/deck/nana-deck.pdf · slides 7 and 8",
@@ -709,7 +691,7 @@ function addArrow(slide, x, y, width, color = C.purple) {
     borderRadius: 30,
     shadow: "shadow-md",
   });
-  await addImage(slide, "assets/landing/agent-confirmed.jpg", {
+  await addImage(slide, "app/apps/nana-wallet/src/assets/landing/agent-confirmed.jpg", {
     left: 922,
     top: 260,
     width: 210,
@@ -1028,10 +1010,10 @@ function addArrow(slide, x, y, width, color = C.purple) {
   }, { fontSize: 22, color: C.muted });
 
   const people = [
-    ["assets/team/robertino.png", "Robertino Barbuto", "@rober8b"],
-    ["assets/team/ramiro.png", "Ramiro Carnicer Souble", "@ram4-dev"],
-    ["assets/team/ignacio.png", "Ignacio Becerra", "@BecerraIgnacio"],
-    ["assets/team/marcos-professional.png", "Marcos Lanzani", "@theboyplunger0x"],
+    ["tmp/deck-v2/assets/team/robertino.png", "Robertino Barbuto", "@rober8b"],
+    ["tmp/deck-v2/assets/team/ramiro.png", "Ramiro Carnicer Souble", "@ram4-dev"],
+    ["tmp/deck-v2/assets/team/ignacio.png", "Ignacio Becerra", "@BecerraIgnacio"],
+    ["tmp/deck-v2/assets/team/marcos-professional.png", "Marcos Lanzani", "@theboyplunger0x"],
   ];
   for (let i = 0; i < people.length; i += 1) {
     const x = 66 + i * 299;
@@ -1073,10 +1055,8 @@ function addArrow(slide, x, y, width, color = C.purple) {
   const slide = presentation.slides.add();
   slide.background.fill = C.purple;
   addGrid(slide, { color: "#6E58E8" });
-  addGlossOrb(slide, 1000, 0, 280, "cream");
-  addShape(slide, "ellipse", { left: 722, top: 115, width: 420, height: 420 }, C.lilacDeep, {
-    line: { style: "solid", fill: C.lavender, width: 1 },
-  });
+  addGlossOrb(slide, 1000, 0, 280);
+  addGlossOrb(slide, 700, 95, 465);
   addText(slide, "nana", { left: M, top: 39, width: 155, height: 50 }, {
     fontSize: 40,
     bold: true,

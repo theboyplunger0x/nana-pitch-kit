@@ -54,7 +54,7 @@ The world is warm rather than clinical, protective rather than controlling, and 
 
 - Warm cream and paper backgrounds.
 - Nana purple used for action and confidence.
-- Soft lilac orbs as the system motif.
+- Soft translucent lilac glass bubbles as the system motif. Use the raster asset in `assets/bubbles/` or reproduce the landing CSS treatment: broad white upper-left bloom, pale lilac body and muted violet inset shading at the lower-right edge.
 - A fine grid suggesting an underlying programmable system.
 - Rounded geometry and generous space.
 - Fredoka for expressive display type; Nunito for readable body copy.
@@ -78,6 +78,5 @@ Infrastructure logos should never appear before the audience understands the hum
 - Dense architecture diagrams before the product is understood.
 - Multiple Nani renders competing with the content.
 - Tiny text used to fit every detail.
-- Treating the orbs as random decoration rather than a consistent system.
+- Treating the bubbles as random decoration rather than a consistent system.
 - Presenting hypotheses with the visual authority of facts.
-
