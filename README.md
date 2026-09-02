@@ -8,8 +8,8 @@ This repository contains the current deck, product model, mission board, landing
 
 1. Read [`strategy/MASTER-CONTEXT.md`](strategy/MASTER-CONTEXT.md).
 2. Open [`strategy/PITCH-REFINEMENT-BRIEF.md`](strategy/PITCH-REFINEMENT-BRIEF.md).
-3. Review [`deck/current/Nana-Pitch-Deck-v2.pdf`](deck/current/Nana-Pitch-Deck-v2.pdf).
-4. Edit [`deck/current/Nana-Pitch-Deck-v2.pptx`](deck/current/Nana-Pitch-Deck-v2.pptx).
+3. Review [`deck/current/Nana-Pitch-Deck-v3.pdf`](deck/current/Nana-Pitch-Deck-v3.pdf).
+4. Edit [`deck/current/Nana-Pitch-Deck-v3.pptx`](deck/current/Nana-Pitch-Deck-v3.pptx).
 5. Use [`pitch/PITCH-SCRIPT.md`](pitch/PITCH-SCRIPT.md) to preserve the spoken narrative.
 6. Use the Mission Board when a product or brand decision is unclear.
 
@@ -19,12 +19,12 @@ This repository contains the current deck, product model, mission board, landing
 | --- | --- |
 | `deck/current/` | Current 16-slide pitch in editable PPTX, shareable PDF and slide PNGs. |
 | `deck/archive/` | Previous deck. Visual and historical reference only. |
-| `deck/source/` | Artifact-tool source and the narrative plan used to generate v2. |
+| `deck/source/` | Artifact-tool sources and narrative plan used to generate v2 and the landing-aligned v3. |
 | `mission-board/` | Internal product constitution: mission, vision, principles and decision filters. |
 | `strategy/` | Product/business model, newest conceptual update and pitch brief. |
 | `pitch/` | Spoken pitch script aligned to the current deck. |
 | `brand/` | Brand voice and visual rules distilled from the landing and mission board. |
-| `assets/` | Logos, reusable landing bubbles, Nani, screenshots, social graphics, video and team photos. |
+| `assets/` | Logos, reusable landing bubbles, atmospheric deck textures, Nani, screenshots, social graphics, video and team photos. |
 | `landing-reference/` | Components, CSS and metadata assets from the hybrid landing. |
 
 ## Current product definition

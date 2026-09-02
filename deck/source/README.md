@@ -1,12 +1,12 @@
 # Deck source
 
-The canonical editable deliverable is `../current/Nana-Pitch-Deck-v2.pptx`.
+The canonical editable deliverable is `../current/Nana-Pitch-Deck-v3.pptx`.
 
-`build.mjs` is the source used to generate the current deck with OpenAI's internal `@oai/artifact-tool`. It is included for layout traceability and structured iteration. It is not required for normal PowerPoint editing.
+`build.mjs` generated v2. `edit-v3.mjs` imports that deck and applies the landing-aligned art direction: atmospheric textures, glass panels, quiet headers, semantic accent colors and the bubble-based expansion diagram.
 
 `content-plan.txt` records the narrative and editorial rules.
 
-`build_pdf.py` creates the visually faithful PDF from the rendered slide PNGs. This avoids font substitution on machines without Fredoka and Nunito.
+`build_pdf_v3.py` creates the visually faithful v3 PDF from high-resolution rendered slide PNGs. This avoids font substitution on machines without Fredoka and Nunito. The original `build_pdf.py` remains as the v2 source.
 
 If editing directly in PowerPoint:
 
