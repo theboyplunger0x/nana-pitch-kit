@@ -1022,13 +1022,13 @@
       font-weight:760;
       line-height:1.38;
     }
-    .som-panel { position:relative; height:630px; }
+    .som-panel { position:relative; height:560px; }
     .som-orbit {
       position:absolute;
       width:528px;
       height:528px;
       left:50%;
-      top:7px;
+      top:16px;
       transform:translateX(-50%);
       border-radius:50%;
       background:linear-gradient(145deg,#32188e 0%,#4025a6 100%);
@@ -1050,18 +1050,18 @@
       position:absolute;
       left:50%;
       z-index:2;
+      width:420px;
       transform:translateX(-50%);
       text-align:center;
       color:#fff;
       font-family:var(--display);
       line-height:1.12;
-      white-space:nowrap;
     }
-    .som-scope.tam { top:45px; font-size:19px; }
-    .som-scope.sam { top:166px; font-size:18px; }
+    .som-scope.tam { top:34px; }
+    .som-scope.sam { top:158px; width:330px; }
     .som-scope span {
       display:block;
-      margin-bottom:5px;
+      margin-bottom:4px;
       color:rgba(255,255,255,.68);
       font-family:var(--body);
       font-size:11px;
@@ -1069,13 +1069,26 @@
       letter-spacing:.15em;
       text-transform:uppercase;
     }
+    .som-scope strong {
+      display:block;
+      color:#fff;
+      font-size:20px;
+      line-height:1.05;
+    }
+    .som-scope b {
+      display:block;
+      margin-top:5px;
+      color:#fff;
+      font-size:27px;
+      line-height:1;
+    }
     .som-core {
       position:absolute;
       z-index:3;
-      width:282px;
-      height:214px;
-      left:123px;
-      bottom:15px;
+      width:290px;
+      height:220px;
+      left:119px;
+      bottom:13px;
       display:flex;
       flex-direction:column;
       align-items:center;
@@ -1094,38 +1107,20 @@
     }
     .som-core strong {
       display:block;
-      margin:8px 0 5px;
-      font-family:var(--display);
-      font-size:55px;
-      line-height:.9;
-      letter-spacing:-2px;
-    }
-    .som-core small { color:var(--muted); font-size:14px; font-weight:750; }
-    .som-economics {
-      position:absolute;
-      left:50%;
-      bottom:0;
-      width:610px;
-      transform:translateX(-50%);
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:20px;
-    }
-    .som-economics div {
-      padding-top:13px;
-      border-top:3px solid var(--purple);
-      color:var(--muted);
-      font-size:15px;
-      line-height:1.3;
-    }
-    .som-economics strong {
-      display:block;
-      margin-bottom:4px;
-      color:var(--purple);
+      margin:8px 0 3px;
       font-family:var(--display);
       font-size:31px;
       line-height:1;
+      letter-spacing:-1px;
     }
+    .som-core b {
+      display:block;
+      color:var(--purple);
+      font-family:var(--display);
+      font-size:29px;
+      line-height:1;
+    }
+    .som-core small { margin-top:7px; color:var(--muted); font-size:13px; font-weight:750; }
     .market-disclaimer {
       position:absolute;
       left:76px;
@@ -1395,17 +1390,13 @@
           </div>
           <div class="som-panel" aria-label="TAM, SAM and SOM market model for people over 75">
             <div class="som-orbit">
-              <div class="som-scope tam"><span>Global TAM</span>333.7M people</div>
-              <div class="som-scope sam"><span>Western markets · SAM</span>132.48M people</div>
-              <div class="som-core"><span>Argentina · 3-year SOM</span><strong>79,500</strong><small>target users</small></div>
-            </div>
-            <div class="som-economics">
-              <div><strong>15,900</strong>modeled paying users at 20% conversion</div>
-              <div><strong>$2.86M</strong>illustrative ARR at USD 15 per month</div>
+              <div class="som-scope tam"><span>Global TAM</span><strong>333.7M users</strong><b>$12.01B ARR</b></div>
+              <div class="som-scope sam"><span>Western markets · SAM</span><strong>132.48M users</strong><b>$4.77B ARR</b></div>
+              <div class="som-core"><span>Argentina · 3-year SOM</span><strong>79,500 users</strong><b>$2.86M ARR</b><small>15,900 modeled paying users</small></div>
             </div>
           </div>
         </div>
-        <p class="market-disclaimer">Illustrative internal model from NANA-01-PITCH-DECK. Population inputs remain under source validation.</p>
+        <p class="market-disclaimer">Illustrative internal model from NANA-01-PITCH-DECK. ARR assumes 20% paid conversion at USD 15 per month; population inputs remain under source validation.</p>
       </section>
 
       <section class="slide" data-title="Motor impairment SOM" aria-label="Slide 9 of 10">
@@ -1419,17 +1410,13 @@
           </div>
           <div class="som-panel" aria-label="TAM, SAM and SOM market model for hand motor impairment">
             <div class="som-orbit">
-              <div class="som-scope tam"><span>Global TAM · 18+</span>113.6M people</div>
-              <div class="som-scope sam"><span>Western markets · SAM</span>27.8M people</div>
-              <div class="som-core"><span>Argentina · 3-year SOM</span><strong>33,150</strong><small>target users</small></div>
-            </div>
-            <div class="som-economics">
-              <div><strong>6,630</strong>modeled paying users at 20% conversion</div>
-              <div><strong>$1.19M</strong>illustrative ARR at USD 15 per month</div>
+              <div class="som-scope tam"><span>Global TAM · 18+</span><strong>113.6M users</strong><b>$4.09B ARR</b></div>
+              <div class="som-scope sam"><span>Western markets · SAM</span><strong>27.8M users</strong><b>$1.00B ARR</b></div>
+              <div class="som-core"><span>Argentina · 3-year SOM</span><strong>33,150 users</strong><b>$1.19M ARR</b><small>6,630 modeled paying users</small></div>
             </div>
           </div>
         </div>
-        <p class="market-disclaimer">Illustrative internal model from NANA-01-PITCH-DECK. SOM assumes 5% Argentina penetration within three years; population inputs remain under source validation.</p>
+        <p class="market-disclaimer">Illustrative internal model from NANA-01-PITCH-DECK. SOM assumes 5% Argentina penetration within three years; ARR assumes 20% paid conversion at USD 15 per month.</p>
       </section>
 
       <section class="slide" data-title="The ask" aria-label="Slide 10 of 10">
