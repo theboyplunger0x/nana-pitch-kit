@@ -56,7 +56,7 @@ The responsible person intervenes by exception, not by default.
 
 - Landing: https://nana-wallet-hybrid.vercel.app
 - Web demo: https://nana-wallet-hybrid.vercel.app/app
-- Product repository: https://github.com/rober8b/aleph-hackathon
+- Product repository: https://github.com/theboyplunger0x/nana-wallet
 
 ## Working agreement
 

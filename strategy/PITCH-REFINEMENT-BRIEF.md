@@ -121,7 +121,6 @@ This can be compressed to 12–14 slides if the story becomes stronger. Do not c
 
 - WHO ageing: https://www.who.int/news-room/fact-sheets/detail/ageing-and-health
 - WHO disability: https://www.who.int/news-room/fact-sheets/detail/disability-and-health
-- Product/demo repository: https://github.com/rober8b/aleph-hackathon
+- Product/demo repository: https://github.com/theboyplunger0x/nana-wallet
 - Current product model: `latest-product-model.txt`
 - Internal constitution: `../mission-board/Nana-Mission-Board.pptx`
-

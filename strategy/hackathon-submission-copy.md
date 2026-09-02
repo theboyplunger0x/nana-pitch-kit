@@ -32,7 +32,7 @@ https://nana-wallet-hybrid.vercel.app/app
 
 ## GitHub repository
 
-https://github.com/rober8b/aleph-hackathon
+https://github.com/theboyplunger0x/nana-wallet
 
 ## Track
 
@@ -41,7 +41,7 @@ Aleph Hackathon 2026 — Track 1: Build with the WDK CLI
 ## Evidence notes
 
 - Public landing and web demo: https://nana-wallet-hybrid.vercel.app
-- WDK integration and submission README: https://github.com/rober8b/aleph-hackathon#aleph-hackathon-2026--wdk-track
+- WDK integration and submission README: https://github.com/theboyplunger0x/nana-wallet#aleph-hackathon-2026--wdk-track
 - Reference network: Ethereum Sepolia
 - Demo token alias: `usdt-test` (test USD₮)
 - Safe fixture mode is the default; live mode requires an explicitly unlocked, limited test wallet.

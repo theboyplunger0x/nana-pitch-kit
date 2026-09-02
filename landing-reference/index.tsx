@@ -341,7 +341,7 @@ function LandingPage() {
               confirmation, signature, settlement and an onchain receipt.
             </p>
             <a
-              href="https://github.com/rober8b/aleph-hackathon"
+              href="https://github.com/theboyplunger0x/nana-wallet"
               target="_blank"
               rel="noreferrer"
               className="landing-text-link"

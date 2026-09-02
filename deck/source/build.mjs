@@ -7,7 +7,7 @@ const SOURCE_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(SOURCE_DIR, "../..");
 const RENDERED_DIR = path.join(ROOT, "tmp/deck-v2/rendered/artifact-tool");
 const PPTX_RENDERED_DIR = path.join(ROOT, "tmp/deck-v2/rendered/pptx");
-const OUT = path.join(ROOT, "docs/deck/Nana-Pitch-Deck-v2.pptx");
+const OUT = path.join(ROOT, "deck/archive/v2/Nana-Pitch-Deck-v2.pptx");
 const BRAND_BUBBLE = path.join(ROOT, "assets/bubbles/nana-glass-bubble-deck.png");
 const brandBubbleBuffer = await fs.readFile(BRAND_BUBBLE);
 const BRAND_BUBBLE_BYTES = new Uint8Array(
@@ -245,7 +245,7 @@ function addArrow(slide, x, y, width, color = C.purple) {
   });
 }
 
-// 01 — Cover
+// 01: Cover
 {
   const slide = presentation.slides.add();
   slide.background.fill = C.cream;
@@ -293,7 +293,7 @@ function addArrow(slide, x, y, width, color = C.purple) {
   ]);
 }
 
-// 02 — Problem
+// 02: Problem
 {
   const slide = presentation.slides.add();
   addHeader(slide, "The problem", "Protection today often means taking over.", 2, { titleWidth: 950 });
@@ -353,10 +353,10 @@ function addArrow(slide, x, y, width, color = C.purple) {
   ]);
 }
 
-// 03 — Why now
+// 03: Why now
 {
   const slide = presentation.slides.add();
-  addHeader(slide, "Why now", "The need is structural — and growing.", 3);
+  addHeader(slide, "Why now", "The need is structural and growing.", 3);
   addText(slide, "A massive population is being asked to navigate an increasingly screen-first financial life.", {
     left: M,
     top: 194,
@@ -399,7 +399,7 @@ function addArrow(slide, x, y, width, color = C.purple) {
   ]);
 }
 
-// 04 — Product
+// 04: Product
 {
   const slide = presentation.slides.add();
   addHeader(slide, "The product", "Ask. Prepare. Confirm. Settle.", 4);
@@ -411,10 +411,10 @@ function addArrow(slide, x, y, width, color = C.purple) {
   }, { fontSize: 22, color: C.muted });
 
   const screens = [
-    ["app/apps/nana-wallet/src/assets/landing/agent-command.jpg", "1", "ASK"],
-    ["app/apps/nana-wallet/src/assets/landing/agent-confirmation.jpg", "2", "PREPARE"],
-    ["app/apps/nana-wallet/src/assets/landing/agent-confirmed.jpg", "3", "CONFIRM"],
-    ["app/apps/nana-wallet/src/assets/landing/agent-home.jpg", "4", "SETTLE"],
+    ["assets/landing/agent-command.jpg", "1", "ASK"],
+    ["assets/landing/agent-confirmation.jpg", "2", "PREPARE"],
+    ["assets/landing/agent-confirmed.jpg", "3", "CONFIRM"],
+    ["assets/landing/agent-home.jpg", "4", "SETTLE"],
   ];
   for (let i = 0; i < screens.length; i += 1) {
     const x = 96 + i * 288;
@@ -444,14 +444,14 @@ function addArrow(slide, x, y, width, color = C.purple) {
   }
   addFooter(slide);
   addNotes(slide, [
-    "app/apps/nana-wallet/src/assets/landing/agent-command.jpg",
-    "app/apps/nana-wallet/src/assets/landing/agent-confirmation.jpg",
-    "app/apps/nana-wallet/src/assets/landing/agent-confirmed.jpg",
-    "app/apps/nana-wallet/src/assets/landing/agent-home.jpg",
+    "assets/landing/agent-command.jpg",
+    "assets/landing/agent-confirmation.jpg",
+    "assets/landing/agent-confirmed.jpg",
+    "assets/landing/agent-home.jpg",
   ]);
 }
 
-// 05 — Dual user
+// 05: Dual user
 {
   const slide = presentation.slides.add();
   addHeader(slide, "Dual-user product", "One account. Two distinct roles.", 5);
@@ -505,11 +505,11 @@ function addArrow(slide, x, y, width, color = C.purple) {
   ]);
 }
 
-// 06 — Exception principle
+// 06: Exception principle
 {
   const slide = presentation.slides.add();
-  addHeader(slide, "The product principle", "Intervention by exception — not by default.", 6, { titleWidth: 1000 });
-  addText(slide, "Protection should remain invisible until a transaction crosses a clear, understandable boundary.", {
+  addHeader(slide, "The product principle", "Intervention happens only by exception.", 6, { titleWidth: 1000 });
+  addText(slide, "The user acts independently. Nana pauses only when an action breaks policy or context.", {
     left: M,
     top: 195,
     width: 860,
@@ -544,13 +544,13 @@ function addArrow(slide, x, y, width, color = C.purple) {
     color: C.red,
     align: "center",
   });
-  addText(slide, "Pause + escalate", { left: 690, top: 407, width: 250, height: 42 }, {
+  addText(slide, "Pause + alert", { left: 690, top: 407, width: 250, height: 42 }, {
     fontSize: 29,
     bold: true,
     typeface: DISPLAY,
     align: "center",
   });
-  addText(slide, "Only when the action breaks\npolicy or context.", {
+  addText(slide, "Nana holds the action and alerts\nthe responsible person.", {
     left: 702,
     top: 468,
     width: 225,
@@ -564,7 +564,7 @@ function addArrow(slide, x, y, width, color = C.purple) {
   ]);
 }
 
-// 07 — Protection engine
+// 07: Protection engine
 {
   const slide = presentation.slides.add();
   addHeader(slide, "Protection engine", "Normal intent flows. Unusual intent pauses.", 7);
@@ -605,10 +605,10 @@ function addArrow(slide, x, y, width, color = C.purple) {
   ]);
 }
 
-// 08 — Delegated execution
+// 08: Delegated execution
 {
   const slide = presentation.slides.add();
-  addHeader(slide, "Delegated execution", "The agent can act — inside boundaries the user controls.", 8, {
+  addHeader(slide, "Delegated execution", "The agent can act inside boundaries the user controls.", 8, {
     titleWidth: 1080,
     titleHeight: 96,
     titleSize: 39,
@@ -624,7 +624,7 @@ function addArrow(slide, x, y, width, color = C.purple) {
     ["1", "USER AUTHORITY", "Defines who can do what", C.lilac],
     ["2", "POLICY", "Limits, recipients and escalation", C.white],
     ["3", "NANA AGENT", "Prepares and explains the action", C.lilac],
-    ["4", "EXECUTION", "Execute — or hold and escalate", C.white],
+    ["4", "EXECUTION", "Execute or hold and escalate", C.white],
   ];
   for (let i = 0; i < nodes.length; i += 1) {
     const x = 68 + i * 296;
@@ -654,7 +654,7 @@ function addArrow(slide, x, y, width, color = C.purple) {
   ]);
 }
 
-// 09 — Proof
+// 09: Proof
 {
   const slide = presentation.slides.add();
   addHeader(slide, "Proof", "The first agentic transfer loop already works.", 9);
@@ -691,7 +691,7 @@ function addArrow(slide, x, y, width, color = C.purple) {
     borderRadius: 30,
     shadow: "shadow-md",
   });
-  await addImage(slide, "app/apps/nana-wallet/src/assets/landing/agent-confirmed.jpg", {
+  await addImage(slide, "assets/landing/agent-confirmed.jpg", {
     left: 922,
     top: 260,
     width: 210,
@@ -711,13 +711,13 @@ function addArrow(slide, x, y, width, color = C.purple) {
   addFooter(slide);
   addNotes(slide, [
     "docs/deck/nana-deck.pdf · slide 9",
-    "https://github.com/rober8b/aleph-hackathon",
-    "app/apps/nana-wallet/src/assets/landing/agent-confirmed.jpg",
+    "https://github.com/theboyplunger0x/nana-wallet",
+    "assets/landing/agent-confirmed.jpg",
     "Hackathon placement and transfer count are team-reported proof points carried forward from the existing deck.",
   ]);
 }
 
-// 10 — Ownership boundary
+// 10: Ownership boundary
 {
   const slide = presentation.slides.add();
   addHeader(slide, "Our boundary", "Nana owns the experience and the trust layer.", 10);
@@ -770,12 +770,12 @@ function addArrow(slide, x, y, width, color = C.purple) {
   addFooter(slide);
   addNotes(slide, [
     "docs/business-model/nana-business-model.pdf · ownership boundary and infrastructure paths",
-    "https://github.com/rober8b/aleph-hackathon",
+    "https://github.com/theboyplunger0x/nana-wallet",
     "Tether/WDK is the proven implementation path; Circle/Arc is an evaluation path, not a committed dependency.",
   ]);
 }
 
-// 11 — Business model
+// 11: Business model
 {
   const slide = presentation.slides.add();
   addHeader(slide, "Business model", "Three hypotheses. One non-negotiable.", 11);
@@ -828,11 +828,11 @@ function addArrow(slide, x, y, width, color = C.purple) {
   ]);
 }
 
-// 12 — Wedge to platform
+// 12: Wedge to platform
 {
   const slide = presentation.slides.add();
   addHeader(slide, "Expansion", "A focused wedge into a broader financial primitive.", 12, { titleWidth: 1030 });
-  addText(slide, "Start where the cost of inaccessible finance is highest — then expand through trusted relationships.", {
+  addText(slide, "Start where the cost of inaccessible finance is highest, then expand through trusted relationships.", {
     left: M,
     top: 193,
     width: 910,
@@ -900,11 +900,11 @@ function addArrow(slide, x, y, width, color = C.purple) {
   ]);
 }
 
-// 13 — GTM
+// 13: GTM
 {
   const slide = presentation.slides.add();
   addHeader(slide, "Go to market", "The responsible person opens the door.", 13);
-  addText(slide, "Distribution starts with the family member who already helps — without turning them into the account owner.", {
+  addText(slide, "Distribution starts with the family member who already helps, without turning them into the account owner.", {
     left: M,
     top: 190,
     width: 900,
@@ -952,10 +952,10 @@ function addArrow(slide, x, y, width, color = C.purple) {
   ]);
 }
 
-// 14 — Built / next
+// 14: Built / next
 {
   const slide = presentation.slides.add();
-  addHeader(slide, "Execution", "A working core — and a focused validation plan.", 14);
+  addHeader(slide, "Execution", "A working core with a focused validation plan.", 14);
   addText(slide, "What exists today is separated from what we need to learn next.", {
     left: M,
     top: 190,
@@ -998,11 +998,11 @@ function addArrow(slide, x, y, width, color = C.purple) {
   ]);
 }
 
-// 15 — Team
+// 15: Team
 {
   const slide = presentation.slides.add();
   addHeader(slide, "Team", "Four builders, one product thesis.", 15);
-  addText(slide, "Product, mobile, agent flows, wallet infrastructure and voice — built together in the open.", {
+  addText(slide, "Product, mobile, agent flows, wallet infrastructure and voice. Built together in the open.", {
     left: M,
     top: 190,
     width: 850,
@@ -1010,10 +1010,10 @@ function addArrow(slide, x, y, width, color = C.purple) {
   }, { fontSize: 22, color: C.muted });
 
   const people = [
-    ["tmp/deck-v2/assets/team/robertino.png", "Robertino Barbuto", "@rober8b"],
-    ["tmp/deck-v2/assets/team/ramiro.png", "Ramiro Carnicer Souble", "@ram4-dev"],
-    ["tmp/deck-v2/assets/team/ignacio.png", "Ignacio Becerra", "@BecerraIgnacio"],
-    ["tmp/deck-v2/assets/team/marcos-professional.png", "Marcos Lanzani", "@theboyplunger0x"],
+    ["assets/team/robertino.png", "Robertino Barbuto", "@rober8b"],
+    ["assets/team/ramiro.png", "Ramiro Carnicer Souble", "@ram4-dev"],
+    ["assets/team/ignacio.png", "Ignacio Becerra", "@BecerraIgnacio"],
+    ["assets/team/marcos-professional.png", "Marcos Lanzani", "@theboyplunger0x"],
   ];
   for (let i = 0; i < people.length; i += 1) {
     const x = 66 + i * 299;
@@ -1041,7 +1041,7 @@ function addArrow(slide, x, y, width, color = C.purple) {
   }
   addFooter(slide);
   addNotes(slide, [
-    "https://github.com/rober8b/aleph-hackathon",
+    "https://github.com/theboyplunger0x/nana-wallet",
     "https://github.com/rober8b",
     "https://github.com/ram4-dev",
     "https://github.com/BecerraIgnacio",
@@ -1050,7 +1050,7 @@ function addArrow(slide, x, y, width, color = C.purple) {
   ]);
 }
 
-// 16 — Close
+// 16: Close
 {
   const slide = presentation.slides.add();
   slide.background.fill = C.purple;
@@ -1090,7 +1090,7 @@ function addArrow(slide, x, y, width, color = C.purple) {
     bold: true,
     color: C.white,
   });
-  addText(slide, "github.com/rober8b/aleph-hackathon", { left: 340, top: 653, width: 370, height: 22 }, {
+  addText(slide, "github.com/theboyplunger0x/nana-wallet", { left: 340, top: 653, width: 470, height: 22 }, {
     fontSize: 14,
     bold: true,
     color: C.lilac,
@@ -1102,7 +1102,7 @@ function addArrow(slide, x, y, width, color = C.purple) {
     "docs/business-model/nana-business-model.pdf · final product primitive",
     "assets/sprites/nani-02-escuchando.png",
     "https://nana-wallet-hybrid.vercel.app",
-    "https://github.com/rober8b/aleph-hackathon",
+    "https://github.com/theboyplunger0x/nana-wallet",
   ]);
 }
 
