@@ -245,6 +245,103 @@ function addArrow(slide, x, y, width, color = C.purple) {
   });
 }
 
+function addMarketLegend(slide) {
+  const entries = [
+    ["TAM", "Everyone the product could serve", C.purpleDark],
+    ["SAM", "Where we can operate and charge", C.action],
+    ["SOM", "What we underwrite in three years", C.white],
+  ];
+  for (let i = 0; i < entries.length; i += 1) {
+    const [label, description, fill] = entries[i];
+    const y = 309 + i * 92;
+    addShape(slide, "ellipse", { left: 80, top: y, width: 22, height: 22 }, fill, {
+      line: { style: "solid", fill: i === 2 ? C.lilacDeep : fill, width: i === 2 ? 2 : 0 },
+    });
+    addText(slide, label, { left: 122, top: y - 2, width: 80, height: 25 }, {
+      fontSize: 17,
+      bold: true,
+      typeface: DISPLAY,
+    });
+    addText(slide, description, { left: 122, top: y + 27, width: 390, height: 31 }, {
+      fontSize: 18,
+      color: C.muted,
+    });
+  }
+}
+
+function addMarketStack(slide, values) {
+  addShape(slide, "ellipse", { left: 700, top: 260, width: 470, height: 382 }, C.purpleDark, {
+    name: "market-tam",
+    line: { style: "solid", fill: C.purpleDark, width: 0 },
+  });
+  addShape(slide, "ellipse", { left: 782, top: 386, width: 306, height: 244 }, C.action, {
+    name: "market-sam",
+    line: { style: "solid", fill: C.action, width: 0 },
+  });
+  addShape(slide, "ellipse", { left: 839, top: 511, width: 192, height: 124 }, C.white, {
+    name: "market-som",
+    line: { style: "solid", fill: C.lilacDeep, width: 2 },
+  });
+
+  addText(slide, values.tam, { left: 780, top: 292, width: 310, height: 110 }, {
+    fontSize: 21,
+    bold: true,
+    color: C.white,
+    typeface: DISPLAY,
+    align: "center",
+    valign: "middle",
+  });
+  addText(slide, values.sam, { left: 815, top: 411, width: 240, height: 96 }, {
+    fontSize: 18,
+    bold: true,
+    color: C.white,
+    typeface: DISPLAY,
+    align: "center",
+    valign: "middle",
+  });
+  addText(slide, values.som, { left: 850, top: 524, width: 170, height: 89 }, {
+    fontSize: 14,
+    bold: true,
+    color: C.purpleDark,
+    typeface: DISPLAY,
+    align: "center",
+    valign: "middle",
+  });
+}
+
+function addCompactMarketStack(slide, x, labels) {
+  addShape(slide, "ellipse", { left: x, top: 337, width: 370, height: 248 }, C.purpleDark, {
+    line: { style: "solid", fill: C.purpleDark, width: 0 },
+  });
+  addShape(slide, "ellipse", { left: x + 62, top: 421, width: 246, height: 158 }, C.action, {
+    line: { style: "solid", fill: C.action, width: 0 },
+  });
+  addShape(slide, "ellipse", { left: x + 112, top: 500, width: 146, height: 82 }, C.white, {
+    line: { style: "solid", fill: C.lilacDeep, width: 2 },
+  });
+  addText(slide, labels.tam, { left: x + 65, top: 365, width: 240, height: 58 }, {
+    fontSize: 21,
+    bold: true,
+    color: C.white,
+    typeface: DISPLAY,
+    align: "center",
+  });
+  addText(slide, labels.sam, { left: x + 86, top: 440, width: 198, height: 54 }, {
+    fontSize: 17,
+    bold: true,
+    color: C.white,
+    typeface: DISPLAY,
+    align: "center",
+  });
+  addText(slide, labels.som, { left: x + 119, top: 512, width: 132, height: 54 }, {
+    fontSize: 13,
+    bold: true,
+    color: C.purpleDark,
+    typeface: DISPLAY,
+    align: "center",
+  });
+}
+
 // 01: Cover
 {
   const slide = presentation.slides.add();
@@ -896,14 +993,135 @@ function addArrow(slide, x, y, width, color = C.purple) {
   addFooter(slide);
   addNotes(slide, [
     "docs/business-model/nana-business-model.pdf · wedge and expansion sequence",
-    "This slide replaces the previous unsupported TAM arithmetic with an explicit product expansion thesis.",
+    "This slide explains the expansion sequence before the market-sizing scenarios that follow.",
   ]);
 }
 
-// 13: GTM
+// 13: Market, seniors
 {
   const slide = presentation.slides.add();
-  addHeader(slide, "Go to market", "The responsible person opens the door.", 13);
+  addHeader(slide, "Market · segment one", "People over 75.", 13);
+  addText(slide, "Illustrative revenue model at 20% paid conversion and USD 15 per month.", {
+    left: M,
+    top: 190,
+    width: 850,
+    height: 48,
+  }, { fontSize: 22, color: C.muted });
+  addMarketLegend(slide);
+  addMarketStack(slide, {
+    tam: "TAM GLOBAL\n333.7M total users\n66.74M paying users\nUSD 12.01B ARR",
+    sam: "SAM WEST\n132.48M total users\n26.50M paying users\nUSD 4.77B ARR",
+    som: "SOM ARG\n79,500 users\n15,900 paying\nUSD 2.86M ARR",
+  });
+  addText(slide, "SOM assumes 5% Argentina penetration in three years. Population inputs remain under source validation.", {
+    left: 80,
+    top: 637,
+    width: 1080,
+    height: 28,
+  }, { fontSize: 12, bold: true, color: C.muted, align: "center" });
+  addFooter(slide);
+  addNotes(slide, [
+    "assets/market/nana-market-75plus-2560x1440-146KB.png",
+    "Internal market sizing model dated 1 September 2026.",
+    "Formula: paying users = total users × 20%; ARR = paying users × USD 15 × 12; SOM users = Argentina population input × 5%.",
+    "Population inputs and the definition of West require independent source validation before external publication.",
+  ]);
+}
+
+// 14: Market, limited mobility
+{
+  const slide = presentation.slides.add();
+  addHeader(slide, "Market · segment two", "Hand motor impairment, 18+.", 14);
+  addText(slide, "Illustrative revenue model at 20% paid conversion and USD 15 per month.", {
+    left: M,
+    top: 190,
+    width: 850,
+    height: 48,
+  }, { fontSize: 22, color: C.muted });
+  addMarketLegend(slide);
+  addMarketStack(slide, {
+    tam: "TAM GLOBAL · 18+\n113.6M total users\n22.72M paying users\nUSD 4.09B ARR",
+    sam: "SAM WEST · 18+\n27.8M total users\n5.56M paying users\nUSD 1.00B ARR",
+    som: "SOM ARG\n33,150 users\n6,630 paying\nUSD 1.19M ARR",
+  });
+  addText(slide, "SOM assumes 5% Argentina penetration in three years. Population inputs remain under source validation.", {
+    left: 80,
+    top: 637,
+    width: 1080,
+    height: 28,
+  }, { fontSize: 12, bold: true, color: C.muted, align: "center" });
+  addFooter(slide);
+  addNotes(slide, [
+    "assets/market/nana-market-motor-impairment-2560x1440-149KB.png",
+    "Internal market sizing model dated 1 September 2026.",
+    "Formula: paying users = total users × 20%; ARR = paying users × USD 15 × 12; SOM users = Argentina population input × 5%.",
+    "Population inputs, the impairment definition and the definition of West require independent source validation before external publication.",
+  ]);
+}
+
+// 15: Market, combined view
+{
+  const slide = presentation.slides.add();
+  addHeader(slide, "Market · both segments", "Two segments. One product.", 15);
+  addText(slide, "The populations overlap, so we do not add them. Both are served by the same voice-first product.", {
+    left: M,
+    top: 190,
+    width: 980,
+    height: 48,
+  }, { fontSize: 22, color: C.muted });
+
+  addText(slide, "People over 75", { left: 120, top: 266, width: 380, height: 40 }, {
+    fontSize: 29,
+    bold: true,
+    typeface: DISPLAY,
+    align: "center",
+  });
+  addText(slide, "Age removes the interface, not the will", { left: 120, top: 305, width: 380, height: 28 }, {
+    fontSize: 17,
+    color: C.muted,
+    align: "center",
+  });
+  addCompactMarketStack(slide, 125, {
+    tam: "TAM GLOBAL\nUSD 12.01B",
+    sam: "SAM WEST\nUSD 4.77B",
+    som: "SOM ARG\nUSD 2.86M",
+  });
+
+  addText(slide, "Hand motor impairment, 18+", { left: 745, top: 266, width: 410, height: 40 }, {
+    fontSize: 29,
+    bold: true,
+    typeface: DISPLAY,
+    align: "center",
+  });
+  addText(slide, "The hands fail before judgement does", { left: 745, top: 305, width: 410, height: 28 }, {
+    fontSize: 17,
+    color: C.muted,
+    align: "center",
+  });
+  addCompactMarketStack(slide, 765, {
+    tam: "TAM GLOBAL\nUSD 4.09B",
+    sam: "SAM WEST\nUSD 1.00B",
+    som: "SOM ARG\nUSD 1.19M",
+  });
+  addText(slide, "Argentina in three years is the market we are underwriting first.", {
+    left: 245,
+    top: 620,
+    width: 790,
+    height: 32,
+  }, { fontSize: 22, bold: true, color: C.purple, typeface: DISPLAY, align: "center" });
+  addFooter(slide);
+  addNotes(slide, [
+    "assets/market/nana-market-both-segments-2560x1440-110KB.png",
+    "Internal market sizing model dated 1 September 2026.",
+    "The two segment estimates overlap and must not be summed.",
+    "All values are scenario outputs, not observed revenue or conversion.",
+  ]);
+}
+
+// 16: GTM
+{
+  const slide = presentation.slides.add();
+  addHeader(slide, "Go to market", "The responsible person opens the door.", 16);
   addText(slide, "Distribution starts with the family member who already helps, without turning them into the account owner.", {
     left: M,
     top: 190,
@@ -952,10 +1170,10 @@ function addArrow(slide, x, y, width, color = C.purple) {
   ]);
 }
 
-// 14: Built / next
+// 17: Built / next
 {
   const slide = presentation.slides.add();
-  addHeader(slide, "Execution", "A working core with a focused validation plan.", 14);
+  addHeader(slide, "Execution", "A working core with a focused validation plan.", 17);
   addText(slide, "What exists today is separated from what we need to learn next.", {
     left: M,
     top: 190,
@@ -998,10 +1216,10 @@ function addArrow(slide, x, y, width, color = C.purple) {
   ]);
 }
 
-// 15: Team
+// 18: Team
 {
   const slide = presentation.slides.add();
-  addHeader(slide, "Team", "Four builders, one product thesis.", 15);
+  addHeader(slide, "Team", "Four builders, one product thesis.", 18);
   addText(slide, "Product, mobile, agent flows, wallet infrastructure and voice. Built together in the open.", {
     left: M,
     top: 190,
@@ -1050,7 +1268,7 @@ function addArrow(slide, x, y, width, color = C.purple) {
   ]);
 }
 
-// 16: Close
+// 19: Close
 {
   const slide = presentation.slides.add();
   slide.background.fill = C.purple;

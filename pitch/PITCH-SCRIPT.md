@@ -1,6 +1,6 @@
-# Nana pitch script: current 16-slide deck
+# Nana pitch script: current 19-slide deck
 
-Target length: approximately 5–6 minutes.
+Target length: approximately 5 to 6 minutes.
 
 This is a narrative baseline, not a script that must be memorized word for word.
 
@@ -70,23 +70,37 @@ We start where the need is strongest: seniors and people with limited mobility. 
 
 The architecture can be horizontal without making the initial go-to-market broad.
 
-## 13: Go to market
+## 13: Market, seniors
+
+Our first market scenario starts with people over 75. At 20% paid conversion and USD 15 per month, the model produces a USD 12.01 billion global TAM, a USD 4.77 billion western-market SAM and a USD 2.86 million three-year SOM in Argentina.
+
+These are scenario outputs, not observed conversion or revenue. The population inputs still need independent source validation before external publication.
+
+## 14: Market, limited mobility
+
+The second segment is adults with hand motor impairment. Using the same pricing and conversion assumptions, the model produces a USD 4.09 billion global TAM, a USD 1.00 billion western-market SAM and a USD 1.19 million three-year SOM in Argentina.
+
+## 15: Market, combined
+
+These populations overlap, so we do not add them. The important point is that the same voice-first product serves both. Argentina is the first market we are underwriting in the model.
+
+## 16: Go to market
 
 Our current hypothesis is that the responsible person opens the door. A daughter or son discovers Nana, helps with setup and trusted relationships, and then steps back. The end user owns the account, speaks, confirms and keeps authority.
 
 Acquisition by trust. Retention by independence.
 
-## 14: What exists and what comes next
+## 17: What exists and what comes next
 
 We already have the working product core: voice intent, agent-prepared transfer, explicit confirmation, receipt and the dual-user protection concept.
 
 Next we need to validate the hardest assumptions: responsible-led acquisition, Family Graph configuration, escalation thresholds, willingness to pay and the right infrastructure path by market.
 
-## 15: Team
+## 18: Team
 
 We are four builders working across product, mobile, agent flows, wallet infrastructure and voice. Nana was discovered and built together, in the open.
 
-## 16: Close
+## 19: Close
 
 We believe the next financial account is agentic: an account that lets people act independently inside a trusted, programmable network of relationships and permissions.
 

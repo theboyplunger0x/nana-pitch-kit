@@ -2,7 +2,7 @@ NANA PITCH DECK V2: CONTENT PLAN
 
 Audience: investors, partners and early collaborators.
 Language: English.
-Format: 16:9, 16 slides.
+Format: 16:9, 19 slides.
 Visual direction: the hybrid Nana landing with warm cream and lilac gradients, soft glass bubbles, Fredoka display typography, Nunito body, Nana product screenshots and Nani character assets. Do not use a background grid.
 
 01 Cover: Independence through voice. Protection when it matters.
@@ -17,10 +17,13 @@ Visual direction: the hybrid Nana landing with warm cream and lilac gradients, s
 10 Ownership boundary: Nana owns the experience and trust; infrastructure is modular.
 11 Business model: Three revenue hypotheses, with safety never behind a paywall.
 12 Wedge to platform: Seniors and mobility, then family finance, then delegated finance.
-13 Go to market: The responsible person opens the door; the end user keeps authority.
-14 Built / next: Separate shipped capabilities from upcoming validation.
-15 Team: Four builders and GitHub handles; no invented job titles.
-16 Close: The new primitive: an agentic financial account built around trusted relationships.
+13 Market, seniors: TAM, SAM and SOM scenario for people over 75.
+14 Market, limited mobility: TAM, SAM and SOM scenario for adults with hand motor impairment.
+15 Market, combined: Compare both segments without adding overlapping populations.
+16 Go to market: The responsible person opens the door; the end user keeps authority.
+17 Built / next: Separate shipped capabilities from upcoming validation.
+18 Team: Four builders and GitHub handles; no invented job titles.
+19 Close: The new primitive: an agentic financial account built around trusted relationships.
 
 Editorial rules:
 - Do not present assumptions as measured facts.
@@ -28,3 +31,4 @@ Editorial rules:
 - Treat Tether/WDK and Circle/Arc as infrastructure paths, not the product identity.
 - Preserve the core thesis: independence for the end user, protection by exception.
 - Use source notes on every slide; include official WHO sources for demographic claims.
+- Label the market sizing as an internal scenario until its population inputs and geography definitions are independently validated.

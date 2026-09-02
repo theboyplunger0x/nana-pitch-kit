@@ -26,7 +26,7 @@ Do not:
 - make the responsible person approve every transaction;
 - put core protection behind a paywall;
 - present pricing, conversion, GTM or infrastructure choices as validated;
-- reintroduce unsupported TAM arithmetic from the archived deck;
+- present the market-sizing scenario as verified fact; preserve the assumptions and validation caveat shown in the current deck;
 - expose stablecoins, chains, gas or addresses as the product experience;
 - use partner infrastructure as Nana's brand identity.
 

@@ -189,10 +189,10 @@ function suppressRepeatedOrbs(slideNo, images) {
     const cornerTop = close(p.left, 1090) && close(p.top, 0) && close(p.width, 190);
     const cornerBottom = close(p.left, 0) && close(p.top, 580) && close(p.width, 140);
     const coverNani = slideNo === 1 && close(p.left, 728) && p.width > 400;
-    const closeNani = slideNo === 16 && close(p.left, 733) && p.width > 395;
+    const closeNani = slideNo === 19 && close(p.left, 733) && p.width > 395;
     const keepCharacter = coverNani || closeNani;
     if (slideNo === 1 && !keepCharacter) suppressImage(image);
-    else if (slideNo === 16 && !keepCharacter) suppressImage(image);
+    else if (slideNo === 19 && !keepCharacter) suppressImage(image);
     else if (slideNo === 6) suppressImage(image);
     else if (cornerTop || cornerBottom) suppressImage(image);
   }
@@ -206,7 +206,8 @@ const backgrounds = [
   "cream", "lilac", "cream", "lilac",
   "cream", "purple", "cream", "lilac",
   "lilac", "cream", "lilac", "cream",
-  "lilac", "cream", "cream", "purple",
+  "lilac", "cream", "lilac", "cream",
+  "lilac", "cream", "purple",
 ];
 
 for (let index = 0; index < deck.slides.count; index += 1) {
@@ -219,7 +220,7 @@ for (let index = 0; index < deck.slides.count; index += 1) {
 
   suppressGridAndFooterRules(shapes);
   suppressRepeatedOrbs(slideNo, images);
-  if (slideNo > 1 && slideNo < 16) restyleHeader(slideNo, textEntries);
+  if (slideNo > 1 && slideNo < 19) restyleHeader(slideNo, textEntries);
 
   // The two purple slides work as visual breaths and carry the same language as the landing manifesto.
   if (slideNo === 6) {
@@ -355,7 +356,7 @@ for (let index = 0; index < deck.slides.count; index += 1) {
     }
   }
 
-  if (slideNo === 13) {
+  if (slideNo === 16) {
     styleCard(shapeAt(shapes, 78, 295), { fill: "white/68", radius: 34 });
     styleCard(shapeAt(shapes, 464, 295), { fill: "#EDE8FF/70", radius: 34 });
     styleCard(shapeAt(shapes, 850, 295), {
@@ -366,28 +367,28 @@ for (let index = 0; index < deck.slides.count; index += 1) {
     });
   }
 
-  if (slideNo === 14) {
+  if (slideNo === 17) {
     styleCard(shapeAt(shapes, 64, 276), { fill: "#DDF5E8/76", line: "#2F7D5A/16", radius: 34 });
     styleCard(shapeAt(shapes, 666, 276), { fill: "#EDE8FF/74", line: "#5639DD/16", radius: 34 });
   }
 
-  if (slideNo === 15) {
+  if (slideNo === 18) {
     for (const x of [66, 365, 664, 963]) styleCard(shapeAt(shapes, x, 276), { fill: "white/58", line: "#5639DD/12", radius: 30 });
   }
 
-  if (slideNo === 16) {
+  if (slideNo === 19) {
     const panel = shapeAt(shapes, 64, 495, 535, 94);
     styleCard(panel, { fill: "white/88", line: "white/42", shadow: "0px 18px 44px #210F72/24", radius: 30 });
     const repo = findText(textEntries, "github.com/theboyplunger0x/nana-wallet");
     if (repo) repo.shape.position = { left: 340, top: 653, width: 470, height: 22 };
   }
 
-  if ([9, 10, 15, 16].includes(slideNo)) {
+  if ([9, 10, 18, 19].includes(slideNo)) {
     const notesBySlide = {
       9: "[Sources]\n- docs/deck/nana-deck.pdf · slide 9\n- https://github.com/theboyplunger0x/nana-wallet\n- assets/landing/agent-confirmed.jpg\n- Hackathon placement and transfer count are team-reported proof points carried forward from the existing deck.",
       10: "[Sources]\n- docs/business-model/nana-business-model.pdf · ownership boundary and infrastructure paths\n- https://github.com/theboyplunger0x/nana-wallet\n- Tether/WDK is the proven implementation path; Circle/Arc is an evaluation path, not a committed dependency.",
-      15: "[Sources]\n- https://github.com/theboyplunger0x/nana-wallet\n- https://github.com/rober8b\n- https://github.com/ram4-dev\n- https://github.com/BecerraIgnacio\n- https://github.com/theboyplunger0x\n- Role labels were intentionally omitted rather than inferred from limited public evidence.",
-      16: "[Sources]\n- docs/business-model/nana-business-model.pdf · final product primitive\n- assets/sprites/nani-02-escuchando.png\n- https://nana-wallet-hybrid.vercel.app\n- https://github.com/theboyplunger0x/nana-wallet",
+      18: "[Sources]\n- https://github.com/theboyplunger0x/nana-wallet\n- https://github.com/rober8b\n- https://github.com/ram4-dev\n- https://github.com/BecerraIgnacio\n- https://github.com/theboyplunger0x\n- Role labels were intentionally omitted rather than inferred from limited public evidence.",
+      19: "[Sources]\n- docs/business-model/nana-business-model.pdf · final product primitive\n- assets/sprites/nani-02-escuchando.png\n- https://nana-wallet-hybrid.vercel.app\n- https://github.com/theboyplunger0x/nana-wallet",
     };
     slide.speakerNotes.textFrame.setText(notesBySlide[slideNo]);
   }

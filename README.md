@@ -25,7 +25,7 @@ The three final PDFs are duplicated at the repository root so nobody has to sear
 
 | Folder | Purpose |
 | --- | --- |
-| `deck/current/` | Current 16-slide pitch in editable PPTX, shareable PDF and slide PNGs. |
+| `deck/current/` | Current 19-slide pitch in editable PPTX, shareable PDF and slide PNGs. |
 | `deck/archive/` | Previous deck. Visual and historical reference only. |
 | `deck/source/` | Artifact-tool sources and narrative plan used to generate v2 and the landing-aligned v3. |
 | `mission-board/` | Internal product constitution: mission, vision, principles and decision filters. |
@@ -49,7 +49,8 @@ The responsible person intervenes by exception, not by default.
 
 - **Current:** `strategy/MASTER-CONTEXT.md`, `deck/current/`, `strategy/latest-product-model.txt`, `mission-board/Nana-Mission-Board.pptx`.
 - **Useful background:** the two model PDFs in `strategy/`.
-- **Historical only:** `deck/archive/nana-deck.pdf` and `assets/market/`.
+- **Historical only:** `deck/archive/nana-deck.pdf`.
+- **Current market reference:** `assets/market/`, used in slides 13 to 15.
 - **Do not present as decided:** Nana Family pricing, paid conversion, infrastructure provider, transaction thresholds or GTM performance.
 
 ## Live references
@@ -65,4 +66,4 @@ The responsible person intervenes by exception, not by default.
 - Do not put core protection behind a paywall.
 - Do not define Nana as a crypto wallet for existing crypto users.
 - Do not expose networks, gas, stablecoins or addresses as the product experience.
-- Do not reintroduce the unsupported market arithmetic from the archived deck.
+- Keep market arithmetic visibly labeled as an internal scenario until population inputs and geography definitions are independently validated.

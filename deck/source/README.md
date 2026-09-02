@@ -2,7 +2,7 @@
 
 The canonical editable deliverable is `../current/Nana-Pitch-Deck-v3.pptx`.
 
-`build.mjs` generated v2. `edit-v3.mjs` imports that deck and applies the landing-aligned art direction: smooth grid-free atmospheric textures, glass panels, quiet headers, semantic accent colors and the bubble-based expansion diagram.
+`build.mjs` generates the 19-slide source deck, including the three market-sizing slides. `edit-v3.mjs` imports that deck and applies the landing-aligned art direction: smooth grid-free atmospheric textures, glass panels, quiet headers, semantic accent colors and the bubble-based diagrams.
 
 `content-plan.txt` records the narrative and editorial rules.
 
@@ -16,3 +16,4 @@ If editing directly in PowerPoint:
 4. Avoid em dashes in slide copy.
 5. Preserve source notes for external facts.
 6. Export a PDF and compare every page to the PPTX before sharing.
+7. Keep the market slides labeled as scenario outputs until the population inputs are independently sourced.

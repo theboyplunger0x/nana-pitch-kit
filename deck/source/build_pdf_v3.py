@@ -8,8 +8,8 @@ OUT = ROOT / "deck/current/Nana-Pitch-Deck-v3.pdf"
 
 width, height = 1280, 720
 page_images = sorted(PAGES.glob("slide-*.png"), key=lambda p: int(p.stem.split("-")[-1]))
-if len(page_images) != 16:
-    raise RuntimeError(f"Expected 16 rendered slides, found {len(page_images)}")
+if len(page_images) != 19:
+    raise RuntimeError(f"Expected 19 rendered slides, found {len(page_images)}")
 
 OUT.parent.mkdir(parents=True, exist_ok=True)
 pdf = canvas.Canvas(str(OUT), pagesize=(width, height), pageCompression=1)
