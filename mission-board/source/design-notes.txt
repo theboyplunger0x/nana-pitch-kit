@@ -1,0 +1,40 @@
+Communication job
+
+By the end, the Nana team should share one language for what Nana exists to
+change, what the product is, which principles are non-negotiable, and which
+parts of the business model remain hypotheses.
+
+Narrative
+
+Mission and vision -> product architecture -> interaction -> protection rule ->
+product principles -> audience and message -> visual system -> truth vs.
+hypotheses -> decision filter.
+
+Visual direction
+
+Use the current hybrid landing system: warm cream canvas, Nana purple, soft
+large spheres, a faint square grid, rounded white surfaces, strong black
+rounded typography, and Nani as a calm guide rather than a childish mascot.
+
+Fonts
+
+The vendored artifact-tool can read and preserve fonts already embedded in an
+imported PPTX, but it has no supported authoring API for embedding new font
+files into a generated PPTX.
+Fredoka and Nunito must be installed locally to render correctly. Get them from Google Fonts:
+https://fonts.google.com/specimen/Fredoka and
+https://fonts.google.com/specimen/Nunito.
+
+Open gaps
+
+The doctrine and the shipped confirmation screen do not match. Slide 13 says
+Nana is not an interface exposing rails and gas. The shipped confirmation UI
+in app/apps/nana-wallet/src/routes/app.tsx, lines 345 to 360, renders amount,
+destination as a raw hex address, network, and estimated cost. This is a
+product decision for Marcos, so the app was not changed here.
+
+The current slide 5 screenshots are mocked. The MSW fixture in
+app/apps/nana-wallet/src/mocks/handlers.ts, lines 596 to 615, supplies 20 USDC,
+the raw 0x1234567890abcdef... recipient, and base-sepolia. That conflicts with
+the deck copy, which says USD-T on Ethereum Sepolia. Redo these screenshots in
+live mode after the product decision is made.

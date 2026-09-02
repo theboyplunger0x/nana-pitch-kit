@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Nana Wallet · Business Model</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --paper:#f4f1ea; --ink:#171717; --muted:#5a5860;
+  --primary:#684cf6; --brand:#4631ba; --soft:#ede8ff; --line:#c8c3d3;
+  --ok:#0f7a46; --okbg:#e2f7ec; --warn:#8a5a00; --warnbg:#fdf1d8;
+  --alert:#a32a2a; --alertbg:#fbe7e7;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+@page{ size:A4; margin:16mm 14mm; }
+body{
+  font-family:"Nunito",system-ui,sans-serif; color:var(--ink);
+  font-size:10.5pt; line-height:1.5; background:var(--bg);
+}
+h1,h2,h3,.dtitle{font-family:"Fredoka",sans-serif;font-weight:600;letter-spacing:-.4px}
+h2{font-size:19pt;margin:0 0 4mm;color:var(--ink)}
+h3{font-size:12.5pt;margin:6mm 0 2.5mm;color:var(--brand)}
+p{margin:0 0 3mm}
+strong{font-weight:800}
+em{font-style:normal;color:var(--brand);font-weight:800}
+.section{page-break-before:always}
+.lead{font-size:11.5pt;color:var(--muted)}
+
+/* portada */
+.cover{height:247mm;display:flex;flex-direction:column;justify-content:center;position:relative}
+.cover .kicker{font-family:"Fredoka",sans-serif;font-weight:600;font-size:11pt;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--primary);margin-bottom:6mm}
+.cover h1{font-size:40pt;line-height:1.04;letter-spacing:-1.6px;max-width:135mm}
+.cover h1 em{color:var(--brand)}
+.cover .sub{margin-top:7mm;font-size:13pt;font-weight:700;color:var(--muted);max-width:120mm}
+.cover .meta{position:absolute;bottom:0;left:0;font-size:9pt;color:var(--muted);font-weight:700}
+.cover img{position:absolute;right:-6mm;bottom:0;height:120mm}
+
+/* callouts */
+.callout{background:var(--soft);border-left:4px solid var(--primary);padding:4mm 5mm;
+  border-radius:0 3mm 3mm 0;margin:4mm 0}
+.callout .lbl{font-family:"Fredoka",sans-serif;font-weight:600;font-size:8.5pt;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--primary);margin-bottom:1.5mm}
+.callout p{font-size:11.5pt;font-weight:800;margin:0;line-height:1.35}
+.note{background:var(--paper);border:1px solid var(--line);border-radius:3mm;padding:4mm 5mm;margin:4mm 0}
+.note .lbl{font-family:"Fredoka",sans-serif;font-weight:600;font-size:8.5pt;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:1.5mm}
+.note p:last-child{margin-bottom:0}
+
+/* diagramas */
+.fig{margin:5mm 0 6mm;page-break-inside:avoid}
+.dtitle{font-size:9pt;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:3mm}
+.box{border:1.5px solid var(--line);border-radius:3mm;background:#fff;padding:3mm 4mm;text-align:center}
+.box .t{font-weight:900;font-size:10pt;line-height:1.2}
+.box .s{font-size:8.5pt;color:var(--muted);font-weight:700;margin-top:1mm;line-height:1.3}
+.box.pri{border-color:var(--primary);background:var(--soft)}
+.box.pri .t{color:var(--brand)}
+.box.solid{background:var(--brand);border-color:var(--brand)}
+.box.solid .t,.box.solid .s{color:#fff}
+.box.ok{border-color:var(--ok);background:var(--okbg)} .box.ok .t{color:var(--ok)}
+.box.warn{border-color:var(--warn);background:var(--warnbg)} .box.warn .t{color:var(--warn)}
+.box.alert{border-color:var(--alert);background:var(--alertbg)} .box.alert .t{color:var(--alert)}
+
+.row{display:flex;gap:5mm;align-items:stretch}
+.row>*{flex:1}
+.col{display:flex;flex-direction:column;gap:3mm;align-items:center}
+.arrow-d{width:0;height:0;border-left:3mm solid transparent;border-right:3mm solid transparent;
+  border-top:3.5mm solid var(--primary);margin:1.5mm auto}
+.stem{width:2px;height:5mm;background:var(--primary);margin:0 auto}
+.arrow-r{display:flex;align-items:center;flex:0 0 auto;padding:0 1mm}
+.arrow-r svg{display:block}
+.stepnum{width:6mm;height:6mm;border-radius:50%;background:var(--brand);color:#fff;
+  font-weight:900;font-size:8.5pt;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.steprow{display:flex;gap:3mm;align-items:flex-start;margin-bottom:2.5mm}
+.steprow .txt{font-size:9.5pt;line-height:1.4}
+ul{margin:0 0 3mm 5mm}
+li{margin-bottom:1.2mm}
+.tbl{width:100%;border-collapse:collapse;margin:4mm 0;font-size:9.5pt}
+.tbl th{background:var(--paper);text-align:left;padding:2.5mm 3mm;font-weight:900;
+  border-bottom:1.5px solid var(--line);font-size:8.5pt;text-transform:uppercase;letter-spacing:.08em}
+.tbl td{padding:2.5mm 3mm;border-bottom:1px solid var(--line);vertical-align:top}
+.tag{display:inline-block;font-size:8pt;font-weight:900;padding:.8mm 2.5mm;border-radius:99px}
+.tag.h{background:var(--okbg);color:var(--ok)}
+.tag.m{background:var(--warnbg);color:var(--warn)}
+.tag.l{background:var(--alertbg);color:var(--alert)}
+</style>
+</head>
+<body>
+
+<!-- ============ PORTADA ============ -->
+<section class="cover">
+  <div class="kicker">Nana Wallet</div>
+  <h1>A consumer financial product with a <em>dual-user model</em></h1>
+  <p class="sub">Independence for the person using it. Protection for the person who cares for them.</p>
+  <div class="meta">Business model working document · August 2026</div>
+  <img src="nani.png" alt="">
+</section>
+
+<!-- ============ 0. TESIS ============ -->
+<section class="section">
+  <h2>The thesis</h2>
+  <p class="lead">Nana is not "a wallet for the elderly". That framing hides the mechanism that makes it work.</p>
+
+  <div class="callout">
+    <div class="lbl">The definition</div>
+    <p>Nana is a free agentic financial account with a dual-user model: independence for the person using it, and protection for the person who cares for them.</p>
+  </div>
+
+  <p>Three roles have to be told apart, because confusing them is what makes every other question unanswerable.</p>
+
+  <div class="fig">
+    <div class="dtitle">Figure 1 · Who does what</div>
+    <div class="row">
+      <div class="box pri"><div class="t">The responsible</div><div class="s">Son, daughter, family member.<br>Discovers, buys, configures.</div></div>
+      <div class="box pri"><div class="t">The end user</div><div class="s">Older adult, or a person with<br>limited mobility. Speaks, confirms.</div></div>
+      <div class="box pri"><div class="t">The rails</div><div class="s">On and off ramp, ARS, QR,<br>bills, stablecoin settlement.</div></div>
+    </div>
+    <div class="stem"></div><div class="arrow-d"></div>
+    <div class="box solid"><div class="t">Nana</div><div class="s">Voice agent · Wallet · Protection · Family graph</div></div>
+  </div>
+
+  <div class="callout">
+    <div class="lbl">The central insight</div>
+    <p>The responsible absorbs the complexity once, so the user gets simplicity every day.</p>
+  </div>
+
+  <div class="note">
+    <div class="lbl">And the rule that keeps it a product</div>
+    <p><strong>The responsible must not approve every payment.</strong> The moment they do, independence was not returned, it was transferred. Intervention happens by exception only. This single rule is what separates Nana from parental controls, and it should survive every future product decision.</p>
+  </div>
+</section>
+
+<!-- ============ 1. ONBOARDING ============ -->
+<section class="section">
+  <h2>Onboarding: the responsible does the ugly part</h2>
+  <p class="lead">Setup is a one-time cost, paid by the person equipped to pay it. The end user should never see this screen.</p>
+
+  <div class="fig">
+    <div class="dtitle">Figure 2 · Setup flow, performed entirely by the responsible</div>
+    <div class="steprow"><div class="stepnum">1</div><div class="txt"><strong>Downloads Nana.</strong> Driven by an ad or by content aimed at 35 to 60 year olds, not at seniors.</div></div>
+    <div class="steprow"><div class="stepnum">2</div><div class="txt"><strong>Creates a family account</strong> and invites the parent.</div></div>
+    <div class="steprow"><div class="stepnum">3</div><div class="txt"><strong>KYC and wallet creation.</strong> The heaviest, most abandonment-prone step, and it happens here, not with the senior.</div></div>
+    <div class="steprow"><div class="stepnum">4</div><div class="txt"><strong>Configures the family graph:</strong> recipients by name (Tomi, grandson · Marcos, son), service providers, daily limit, trusted recipients, alert contacts.</div></div>
+    <div class="steprow"><div class="stepnum">5</div><div class="txt"><strong>Funds the account.</strong> ARS through a partner, settled into stablecoin.</div></div>
+    <div class="stem"></div><div class="arrow-d"></div>
+    <div class="box ok"><div class="t">Setup complete</div><div class="s">Everything above happens once, and never again</div></div>
+    <div class="stem"></div><div class="arrow-d"></div>
+    <div class="box solid"><div class="t">"Hey Nana"</div><div class="s">The end user's first and only interface</div></div>
+  </div>
+
+  <div class="note">
+    <div class="lbl">Why this ordering matters commercially</div>
+    <p>KYC, funding and configuration are where consumer fintech loses most of its funnel. Moving all three onto a motivated, capable buyer changes the conversion math of the entire product, before a single feature is built.</p>
+  </div>
+</section>
+
+<!-- ============ 2. DAILY USE ============ -->
+<section class="section">
+  <h2>Daily use: the wallet disappears</h2>
+  <p class="lead">After setup, Nana should stop looking like a financial app at all.</p>
+
+  <div class="fig">
+    <div class="dtitle">Figure 3 · One payment, end to end</div>
+    <div class="row" style="align-items:center">
+      <div class="box"><div class="t">"Nana, send<br>$20,000 ARS to Tomi"</div><div class="s">Spoken, in ordinary words</div></div>
+      <div class="arrow-r"><svg width="34" height="14"><path d="M1 7h24" stroke="#684cf6" stroke-width="2.4" stroke-linecap="round"/><path d="M20 2l6 5-6 5" stroke="#684cf6" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="box pri"><div class="t">Nana agent</div><div class="s">Understands intent · resolves "Tomi" ·
+        picks the rail · prepares the transaction · checks policies</div></div>
+      <div class="arrow-r"><svg width="34" height="14"><path d="M1 7h24" stroke="#684cf6" stroke-width="2.4" stroke-linecap="round"/><path d="M20 2l6 5-6 5" stroke="#684cf6" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="box"><div class="t">"$20,000 ARS to Tomi,<br>your grandson.<br>Confirm?"</div><div class="s">One decision, in plain language</div></div>
+    </div>
+    <div class="stem"></div><div class="arrow-d"></div>
+    <div class="box ok"><div class="t">Done</div><div class="s">Receipt stays on screen until the user closes it</div></div>
+  </div>
+
+  <div class="note">
+    <div class="lbl">What stays invisible</div>
+    <p>CBU, stablecoin, network, gas, on and off ramp, address. None of it reaches the person paying. The agent does the work; the user makes the one decision that actually carries consequence.</p>
+  </div>
+</section>
+
+<!-- ============ 3. PROTECTION ============ -->
+<section class="section">
+  <h2>Protection: the second product</h2>
+  <p class="lead">The same account behaves differently depending on what is being asked of it.</p>
+
+  <div class="fig">
+    <div class="dtitle">Figure 4 · Two payments, two paths</div>
+    <div class="row">
+      <div class="col" style="flex:1">
+        <div class="box ok" style="width:100%"><div class="t">Ordinary payment</div><div class="s">"Send $15,000 ARS to Sofi"</div></div>
+        <div class="arrow-d"></div>
+        <div class="box" style="width:100%"><div class="s">Known recipient<br>Usual amount<br>Normal behaviour</div></div>
+        <div class="arrow-d"></div>
+        <div class="box ok" style="width:100%"><div class="t">User confirms. Done.</div><div class="s">The responsible is never involved</div></div>
+      </div>
+      <div class="col" style="flex:1">
+        <div class="box alert" style="width:100%"><div class="t">Unusual payment</div><div class="s">"Send $900,000 ARS to this account"</div></div>
+        <div class="arrow-d"></div>
+        <div class="box" style="width:100%"><div class="s">New recipient<br>Unusual amount<br>Anomalous behaviour · over limit</div></div>
+        <div class="arrow-d"></div>
+        <div class="box warn" style="width:100%"><div class="t">Transaction held</div><div class="s">Responsible alerted → approve or block</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="lbl">The load-bearing rule, restated</div>
+    <p>Normal activity: user → Nana. Unusual activity only: user → Nana → responsible.</p>
+  </div>
+
+  <div class="note">
+    <div class="lbl">Where the liability sits, and how it is contained</div>
+    <p>Any product that says it detects scams carries exposure when it misses one. That exposure is smaller when protection is a free, universal property of the account rather than a paid promise. Charging for safety converts a best-effort feature into a purchased guarantee, which is a materially worse legal position. Keeping the safety floor free is the containment strategy, not a giveaway.</p>
+  </div>
+</section>
+
+<!-- ============ 4. MONETIZATION ============ -->
+<section class="section">
+  <h2>Three monetization hypotheses</h2>
+  <p class="lead">Not one business model. Three bets, to be validated in sequence rather than launched together.</p>
+
+  <div class="fig">
+    <div class="dtitle">Figure 5 · Revenue architecture</div>
+    <div class="box solid" style="margin-bottom:4mm"><div class="t">Nana</div></div>
+    <div class="row">
+      <div class="box pri"><div class="t">Transactions</div><div class="s">Revenue share on on and off ramp,
+        FX, QR, bill payment</div></div>
+      <div class="box pri"><div class="t">Nana Family</div><div class="s">Subscription for the
+        protection layer</div></div>
+      <div class="box pri"><div class="t">B2B2C</div><div class="s">Licensing to banks
+        and fintechs</div></div>
+    </div>
+  </div>
+
+  <h3>Layer 1 · The wallet is free, activity is monetized</h3>
+  <p>Nana is downloaded and used for free. Usage generates volume through a financial partner, and Nana takes a share of the fee or spread rather than charging the senior a visible percentage.</p>
+
+  <div class="note">
+    <div class="lbl">The number this layer has to survive</div>
+    <p>Older adults are, by definition, low-volume users. Ten payments of $20,000 ARS per month is roughly USD 150 of monthly volume. At a 1% spread split evenly with the partner, that is well under one dollar per user per month. <strong>Layer 1 is presented first but may be the weakest of the three.</strong> Either the volume assumption is wrong, or the sequencing is, and knowing which one is a research question, not an opinion.</p>
+  </div>
+
+  <h3>Layer 2 · Nana Family, sold on capability</h3>
+
+  <div class="callout">
+    <div class="lbl">The line that must not be crossed</div>
+    <p>Safety is never the upsell. Every Nana account, paid or not, gets the confirmation step, the limits and the anomaly detection. The subscription sells reach, control and convenience, never protection itself.</p>
+  </div>
+
+  <p>Charging for protection would mean the free product knowingly leaves someone exposed. That is bad to sell, bad to defend, and it manufactures the exact liability the company should be avoiding. The paid tier has to earn its price on capability instead.</p>
+
+  <table class="tbl">
+    <tr><th style="width:50%">Nana, free · safety included</th><th>Nana Family · capability</th></tr>
+    <tr>
+      <td>
+        Wallet and voice agent<br>
+        Send, receive, balance, bill payment<br>
+        <strong>Confirmation step on every movement</strong><br>
+        <strong>Daily limit and trusted recipients</strong><br>
+        <strong>Anomaly detection and hold</strong><br>
+        <strong>One alert contact</strong>
+      </td>
+      <td>
+        Everything free, plus:<br>
+        Several responsible contacts, with roles<br>
+        Several seniors on one family account<br>
+        Family dashboard and exportable reports<br>
+        Recurring payments and bill autopay<br>
+        Fine-grained policies, per recipient and per category<br>
+        Full history and statements<br>
+        Priority human support
+      </td>
+    </tr>
+  </table>
+
+  <p>The pitch is not <strong>pay to keep your mother safe</strong>. It is closer to <strong>you are looking after two parents, from another city, with your sibling. Here is the account that handles that.</strong> A caregiving household with real coordination needs is a different customer from one adult child with one parent, and only the first one has a reason to pay.</p>
+
+  <div class="note">
+    <div class="lbl">What still has to be proven</div>
+    <p>Willingness to pay is asserted, not measured. The honest test is narrow: does a household with more than one caregiver, or more than one dependent, hit a wall in the free tier that they want removed? If the free tier is enough for almost everyone, this layer does not exist and the answer is layer 1 or layer 3.</p>
+  </div>
+
+  <h3>Layer 3 · B2B2C, the largest and least certain</h3>
+  <p>Rather than acquiring every older adult individually, Nana becomes a layer an institution offers: <em>Nana Mode, powered by [bank]</em>. The bank already has users, KYC, ARS accounts, cards, QR and compliance. Nana contributes the voice agent, the accessibility, the family relationships, the protection policies and the agentic execution. Priced per active user, as an enterprise licence, or as revenue share.</p>
+  <div class="note">
+    <div class="lbl">The assumption underneath</div>
+    <p>That banks want this. They carry accessibility obligations but modest commercial incentive. This is the most speculative of the three and should be labelled that way in any conversation.</p>
+  </div>
+</section>
+
+<!-- ============ 5. SEQUENCE ============ -->
+<section class="section">
+  <h2>Sequence, and go to market</h2>
+
+  <div class="fig">
+    <div class="dtitle">Figure 6 · What gets validated before what</div>
+    <div class="row" style="align-items:center">
+      <div class="box"><div class="t">Free wallet</div><div class="s">Ship it, watch usage</div></div>
+      <div class="arrow-r"><svg width="30" height="14"><path d="M1 7h20" stroke="#684cf6" stroke-width="2.4" stroke-linecap="round"/><path d="M16 2l6 5-6 5" stroke="#684cf6" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="box"><div class="t">Transaction revenue</div><div class="s">Only once volume is real</div></div>
+      <div class="arrow-r"><svg width="30" height="14"><path d="M1 7h20" stroke="#684cf6" stroke-width="2.4" stroke-linecap="round"/><path d="M16 2l6 5-6 5" stroke="#684cf6" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="box"><div class="t">Nana Family</div><div class="s">Only once households ask for it</div></div>
+      <div class="arrow-r"><svg width="30" height="14"><path d="M1 7h20" stroke="#684cf6" stroke-width="2.4" stroke-linecap="round"/><path d="M16 2l6 5-6 5" stroke="#684cf6" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="box pri"><div class="t">B2B2C</div><div class="s">Only once PMF is proven</div></div>
+    </div>
+  </div>
+
+  <div class="note">
+    <div class="lbl">This ordering is a choice, not a dependency</div>
+    <p>Nothing forces layer 1 to come first. Willingness to pay can be tested with a priced fake door in a week, without building a single rail. The sequence above optimises for what is easiest to build; a sequence optimised for what is riskiest to assume would test pricing first. Worth deciding on purpose.</p>
+  </div>
+
+  <h3>Go to market: you do not acquire the senior</h3>
+  <div class="fig">
+    <div class="dtitle">Figure 7 · Acquisition path</div>
+    <div class="row" style="align-items:center">
+      <div class="box"><div class="t">Ad or content</div><div class="s">Aimed at 35 to 60</div></div>
+      <div class="arrow-r"><svg width="30" height="14"><path d="M1 7h20" stroke="#684cf6" stroke-width="2.4" stroke-linecap="round"/><path d="M16 2l6 5-6 5" stroke="#684cf6" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="box pri"><div class="t">"I need this<br>for my mom"</div><div class="s">The actual purchase decision</div></div>
+      <div class="arrow-r"><svg width="30" height="14"><path d="M1 7h20" stroke="#684cf6" stroke-width="2.4" stroke-linecap="round"/><path d="M16 2l6 5-6 5" stroke="#684cf6" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="box"><div class="t">Sets mom up</div><div class="s">Invite, KYC, family graph</div></div>
+      <div class="arrow-r"><svg width="30" height="14"><path d="M1 7h20" stroke="#684cf6" stroke-width="2.4" stroke-linecap="round"/><path d="M16 2l6 5-6 5" stroke="#684cf6" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="box ok"><div class="t">Daily voice use</div><div class="s">By mom</div></div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="lbl">The positioning that follows from it</div>
+    <p>Not "are you 78? download our crypto wallet". Instead: give your parents financial independence without giving up your peace of mind.</p>
+  </div>
+
+  <h3>The loop worth testing</h3>
+  <p>The responsible downloads Nana and invites a parent. The parent uses it and adds family recipients. Those relatives see Nana working inside their own family. Some of them become the responsible in another household.</p>
+  <p>Whether this behaves as a real growth loop is unknown. It is cheap to instrument and worth measuring early.</p>
+</section>
+
+<!-- ============ 6. RESUMEN ============ -->
+<section class="section">
+  <h2>The model on one page</h2>
+
+  <table class="tbl">
+    <tr><th style="width:34%">Question</th><th>Answer</th></tr>
+    <tr><td><strong>Who uses it?</strong></td><td>The older adult, or a person with limited mobility.</td></tr>
+    <tr><td><strong>Who sets it up?</strong></td><td>The son, daughter or responsible family member.</td></tr>
+    <tr><td><strong>Who may pay?</strong></td><td>The responsible, or the financial partner. Not the end user.</td></tr>
+    <tr><td><strong>Who distributes?</strong></td><td>Nana directly at first. Banks and fintechs eventually.</td></tr>
+    <tr><td><strong>How does it make money?</strong></td><td>Financial revenue share, then Nana Family premium, then B2B2C licensing.</td></tr>
+  </table>
+
+  <h3>Confidence, stated honestly</h3>
+  <table class="tbl">
+    <tr><th style="width:46%">Claim</th><th style="width:18%">Confidence</th><th>Why</th></tr>
+    <tr><td>Dual-user architecture</td><td><span class="tag h">High</span></td><td>Falls out of how the product is actually used and set up.</td></tr>
+    <tr><td>Go to market through the responsible</td><td><span class="tag h">High</span></td><td>Follows directly from who makes the purchase decision.</td></tr>
+    <tr><td>Exception-only intervention</td><td><span class="tag h">High</span></td><td>Required by the product's own promise. Break it and independence is gone.</td></tr>
+    <tr><td>Nana Family subscription</td><td><span class="tag m">Medium</span></td><td>Sold on capability, not on safety. Depends on whether multi-caregiver households hit a real wall in the free tier.</td></tr>
+    <tr><td>Transaction revenue as layer 1</td><td><span class="tag l">Low</span></td><td>Per-user volume for this segment is small. The arithmetic has to be run.</td></tr>
+    <tr><td>B2B2C licensing</td><td><span class="tag l">Low</span></td><td>Assumes institutional appetite that has not been tested.</td></tr>
+  </table>
+
+  <div class="note">
+    <div class="lbl">Missing from this document, and needed before any investor conversation</div>
+    <p><strong>Regulation.</strong> ARS on and off ramp, stablecoin custody, third-party funds, and a vulnerable-adult user base. Argentina's PSAV regime and the compliance path are absent here, and they shape which of the three layers is even legal to run alone.</p>
+  </div>
+
+  <div class="callout">
+    <div class="lbl">What to say in the room</div>
+    <p>The user architecture and the go to market are defined. The revenue model is three hypotheses, not a conclusion. Validate who adopts, who uses and who pays, and the revenue question stops being speculative.</p>
+  </div>
+</section>
+
+</body>
+</html>

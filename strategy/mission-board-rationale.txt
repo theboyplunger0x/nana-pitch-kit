@@ -1,0 +1,453 @@
+Sí. Revisé el modelo más nuevo y lo contrasté con todo lo que fuimos cristalizando en el thread. El material ya da para una Mission Board / Product Constitution bastante seria.
+
+Lo importante es que no sea otro pitch deck. Tiene que ser el documento que los cuatro puedan mirar y responder: qué estamos construyendo, para quién, qué creemos, qué no hacemos y cómo tomamos decisiones.
+
+Del modelo ya están bastante definidos: dual-user model, abstracción total de la infraestructura financiera, intervención del responsable sólo por excepción, Family Graph y las tres hipótesis de monetización.  
+
+Yo lo estructuraría así:
+
+NANA — MISSION BOARD
+
+Mission
+
+Give people financial independence without asking them to adapt to financial technology.
+
+No pondría seniors en la misión.
+
+Ese es el wedge actual, no necesariamente la misión de la compañía. Esto deja abierta la expansión que hablamos hacia menores, familias y cualquier persona que necesite autonomía delegada.
+
+Vision
+
+A world where anyone can manage their financial life naturally, while the people they trust can protect them without taking control away.
+
+Esta para mí contiene el descubrimiento más importante de Nana:
+
+independence ≠ being alone.
+
+⸻
+
+The Problem
+
+Financial products are built around interfaces, not people.
+
+Hoy, cuando una persona empieza a necesitar ayuda financiera, la solución suele ser quitarle responsabilidades:
+
+can't navigate banking
+        ↓
+family steps in
+        ↓
+family pays bills
+        ↓
+family moves money
+        ↓
+family controls account
+        ↓
+less risk
+        ↓
+less independence
+
+El thread encontró precisamente esta tensión.
+
+La protección termina convirtiéndose en control.
+
+Y Nana quiere romper esa relación.
+
+⸻
+
+Our Belief
+
+Esta sería probablemente la frase central del Mission Board:
+
+People shouldn’t have to adapt to financial technology. Financial technology should adapt to them.
+
+Y debajo:
+
+Traditional fintech
+User → learns interface → executes action
+Nana
+User → expresses intent → agent executes action
+
+⸻
+
+Product Principle #1
+
+Voice is the interface. The agent is the wallet.
+
+No estamos construyendo:
+
+voice
+ ↓
+speech-to-text
+ ↓
+traditional wallet UI
+
+Estamos construyendo:
+
+"mandale $20.000 a Tomi"
+           ↓
+      NANA AGENT
+           ↓
+ understands intent
+ resolves recipient
+ chooses rail
+ checks policies
+ prepares action
+           ↓
+"$20.000 a Tomi,
+tu nieto. confirmas?"
+           ↓
+          yes
+           ↓
+        PAYMENT
+
+CBU, stablecoin, network, gas, on/off-ramp y address deberían ser invisibles para el usuario. Eso ya está explícitamente definido en el modelo. nana-modelo(1).pdf
+
+⸻
+
+Product Principle #2
+
+Independence with protection.
+
+No:
+
+INDEPENDENCE              PROTECTION
+user does everything  OR  family controls everything
+
+Sí:
+
+                 NANA
+NORMAL                         UNUSUAL
+ACTIVITY                       ACTIVITY
+User                           User
+ │                              │
+ ▼                              ▼
+Nana                           Nana
+ │                              │
+ ▼                              ▼
+Execute                    Risk detected
+                                │
+                                ▼
+                           Responsible
+
+La frase que pondría abajo:
+
+The responsible intervenes by exception, not by default.
+
+Porque si tiene que aprobar cada pago, no devolvimos independencia. Ese principio está literalmente en el modelo actual. nana-modelo(1).pdf
+
+⸻
+
+The Two Users
+
+                         NANA
+                           │
+             ┌─────────────┴─────────────┐
+             │                           │
+             ▼                           ▼
+          END USER                  RESPONSIBLE
+       senior / limited            son / daughter
+           mobility                   family
+             │                           │
+           speaks                    configures
+            uses                     protects
+          confirms                  supervises
+
+End user wants
+
+Independence.
+
+Responsible wants
+
+Peace of mind without becoming the financial interface themselves.
+
+El GTM actual parte justamente del responsable, no del adulto mayor. nana-modelo(1).pdf
+
+⸻
+
+Initial Wedge
+
+Acá sí:
+
+Seniors and people with limited mobility.
+
+¿Por qué?
+
+No porque Nana sólo pueda servirles a ellos.
+
+Porque para ellos voice-first + agentic execution no es convenience. Es accessibility.
+
+TODAY
+Seniors
+Limited mobility
+Family caregivers
+TOMORROW
+Minors
+Family spending
+Delegated accounts
+Assisted finance
+VISION
+Agentic finance for anyone
+
+Esto evita que la compañía quede encerrada conceptualmente en “wallet para abuelos”.
+
+⸻
+
+Family Graph
+
+Acá está probablemente el activo estratégico más interesante que encontraron después de la hackathon.
+
+                  FAMILY GRAPH
+                     MAMÁ
+               ┌──────┼──────┐
+               │      │      │
+             HIJO    HIJA   NIETO
+               │      │
+               │     PAPÁ
+               │      │
+               └──────┘
+
+Las conexiones tienen significado:
+
+Laura → Mamá
+responsible / admin
+Marcos → Mamá
+alerts
+Tomi → Abuela
+trusted recipient
+Laura → Papá
+responsible
+
+El documento actual ya plantea que Nana Family monetiza la expansión de esta red, no la seguridad, y que eventualmente este grafo puede ser el activo licenciable a instituciones. nana-modelo(1).pdf
+
+Una frase que conservaría:
+
+Banks have accounts. Nana understands families.
+
+⸻
+
+Product Architecture
+
+                   RESPONSIBLE
+                        │
+              setup + protection
+                        │
+                        ▼
+                ┌───────────────┐
+                │     NANA      │
+                │               │
+                │ Voice Agent   │
+                │ Wallet        │
+                │ Protection    │
+                │ Family Graph  │
+                └───────┬───────┘
+                        ▲
+                        │
+                 voice + confirm
+                        │
+                    END USER
+                        │
+                        ▼
+                FINANCIAL RAILS
+                        │
+            ┌───────────┼───────────┐
+            ▼           ▼           ▼
+           ARS          QR         BILLS
+            ↕
+       STABLECOINS
+
+Esta arquitectura ya está prácticamente cerrada en el documento. nana-modelo(1).pdf
+
+⸻
+
+What Nana Owns
+
+Esto lo agregaría porque las conversaciones con Belo, WDK, Arc, etc. hacen que sea fundamental.
+
+NANA OWNS
+Product experience
+Voice agent
+Intent orchestration
+Family Graph
+Permissions
+Protection logic
+Risk experience
+Brand
+User relationship
+PARTNERS CAN PROVIDE
+Wallet infrastructure
+Stablecoin rails
+ARS on/off-ramp
+KYC infrastructure
+QR
+Bill payments
+Settlement
+
+Principio:
+
+Nana should own the user relationship, not reinvent every financial rail.
+
+⸻
+
+Business Model Hypotheses
+
+No lo presentaría como cerrado.
+
+                    NANA REVENUE
+                         │
+          ┌──────────────┼──────────────┐
+          │              │              │
+          ▼              ▼              ▼
+     FINANCIAL        NANA FAMILY      B2B2C
+      ACTIVITY           NETWORK       LICENSING
+    revenue share      subscription     banks /
+    financial rails    family graph     fintechs
+
+Y una regla:
+
+Nana never charges for being protected. Nana charges for complexity and expanded coordination.
+
+El modelo actual justamente rechaza poner la protección core detrás de un paywall. nana-modelo(1).pdf
+
+⸻
+
+Nana Free vs Nana Family
+
+NANA FREE                       NANA FAMILY
+1 protected person              multiple protected people
+voice agent                     multiple responsible users
+payments                        roles & permissions
+core protection                 family dashboard
+trusted recipients              shared coordination
+alerts                           reports
+                                family financial graph
+
+No es:
+
+Basic wallet → better wallet.
+
+Es:
+
+Individual relationship → family network.
+
+⸻
+
+Go To Market
+
+AD / CONTENT
+     │
+     ▼
+SON / DAUGHTER
+     │
+     │ "I need this for my mom"
+     ▼
+DOWNLOAD NANA
+     │
+     ▼
+SET UP / ACCOMPANY
+     │
+     ▼
+INVITE PARENT
+     │
+     ▼
+DAILY VOICE USE
+
+Mensaje:
+
+Give your parents financial independence without giving up peace of mind.
+
+⸻
+
+Brand Promise
+
+Acá recuperaría lo que construimos durante el pitch:
+
+Independence. Accessibility. Protection.
+
+Pero para el Mission Board agregaría:
+
+Functional promise
+
+Manage money by expressing intent, not navigating interfaces.
+
+Emotional promise — end user
+
+I can still manage my own money.
+
+Emotional promise — responsible
+
+I don’t have to control everything to know they’re protected.
+
+Esta última me parece particularmente fuerte.
+
+⸻
+
+What We Are Not
+
+Esto es importante para evitar feature creep.
+
+Nana is not:
+
+* a crypto wallet for crypto users;
+* a chatbot inside a banking app;
+* a parental-control wallet;
+* a family member approving every transaction;
+* an LLM holding unrestricted private keys;
+* another interface exposing networks, gas and addresses.
+
+Nana is:
+
+An agentic financial account that turns intent into action while preserving bounded human control.
+
+⸻
+
+North Star
+
+Todavía no pondría MAU, volume o TVL como North Star.
+
+Pondría conceptualmente:
+
+Financial actions completed independently that previously required assistance.
+
+Eso mide exactamente la misión.
+
+Ejemplo:
+
+BEFORE NANA
+"Mamá, pasame la factura que te la pago."
+WITH NANA
+"Nana, pagá la luz."
+✓
+
+Cada vez que eso ocurre, Nana creó independencia.
+
+⸻
+
+The Company
+
+Y cerraría el board con algo así:
+
+MISSION
+Give people financial independence
+without asking them to adapt to technology.
+                 ↓
+PRODUCT
+Voice-first agentic financial account.
+                 ↓
+SYSTEM
+Agent + Wallet + Protection + Family Graph.
+                 ↓
+WEDGE
+Seniors + limited mobility.
+                 ↓
+GTM
+Responsible-led acquisition.
+                 ↓
+EXPANSION
+Families → minors → delegated finance.
+                 ↓
+VISION
+Financial technology that adapts to people.
+
+Creo que esto ya es la columna vertebral del Mission Board.
+
+Lo que todavía me falta revisar para convertirlo en un design system / board visual definitivo son las slides y assets concretos que mencionás. La búsqueda encontró el modelo, pero no me devolvió claramente un deck/brand kit de Nana. Si esos archivos están en una carpeta de tu Library, puedo buscar específicamente esa carpeta y usar logo, paleta, tipografía, personaje, screenshots y slides para bajar todo esto a un board visual coherente, no sólo contenido.

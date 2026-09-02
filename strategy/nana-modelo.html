@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Nana · Modelo de negocio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{ --ink:#1a1a1a; --muted:#6b6b6b; --line:#dcdcdc; --soft:#f6f6f5; --acc:#4631ba; }
+*{box-sizing:border-box;margin:0;padding:0}
+@page{ size:A4; margin:20mm 20mm 18mm; }
+body{ font-family:"Inter",system-ui,sans-serif; color:var(--ink); font-size:10.5pt; line-height:1.6 }
+
+h1{ font-size:21pt; font-weight:700; letter-spacing:-.5px; margin-bottom:2mm }
+.sub{ font-size:11pt; color:var(--muted) }
+.date{ font-size:9pt; color:var(--muted); padding-bottom:5mm; border-bottom:1px solid var(--line); margin-bottom:8mm }
+
+h2{ font-size:13pt; font-weight:700; margin:9mm 0 3mm; letter-spacing:-.2px; page-break-after:avoid }
+h2 .n{ color:var(--muted); font-weight:500; margin-right:2mm }
+h3{ font-size:10.5pt; font-weight:700; margin:5mm 0 2mm; page-break-after:avoid }
+p{ margin:0 0 3mm }
+strong{ font-weight:700 }
+em{ font-style:italic }
+ul{ margin:0 0 3mm 5mm } li{ margin-bottom:1mm }
+
+pre{
+  font-family:Menlo,"JetBrains Mono","SF Mono",Consolas,monospace;
+  font-size:8.6pt; line-height:1.2; white-space:pre; color:var(--ink);
+  margin:4mm 0 5mm; page-break-inside:avoid; letter-spacing:0;
+}
+pre.c{ width:fit-content; margin-left:auto; margin-right:auto; text-align:left }
+
+.key{ border-left:3px solid var(--acc); padding:2mm 0 2mm 4mm; margin:4mm 0;
+  font-weight:600; font-size:11pt; line-height:1.45 }
+.aside{ background:var(--soft); padding:3.5mm 4.5mm; margin:4mm 0; font-size:10pt; border-radius:1.5mm;
+  page-break-inside:avoid }
+.aside b{ display:block; margin-bottom:1mm; font-size:8.5pt; text-transform:uppercase;
+  letter-spacing:.1em; color:var(--muted); font-weight:700 }
+.aside p:last-child{ margin-bottom:0 }
+table{ width:100%; border-collapse:collapse; margin:4mm 0; font-size:9.5pt; page-break-inside:avoid }
+th{ text-align:left; padding:2mm 3mm; font-size:8.5pt; text-transform:uppercase; letter-spacing:.08em;
+  border-bottom:1.5px solid var(--ink); font-weight:700 }
+td{ padding:2mm 3mm; border-bottom:1px solid var(--line); vertical-align:top }
+</style>
+</head>
+<body>
+
+<h1>Nana · Modelo de negocio</h1>
+<p class="sub">Documento de trabajo. Para discutir entre socios, no para mostrar afuera.</p>
+<p class="date">Agosto 2026</p>
+
+<p>Ahora que aclaramos quién descubre y configura Nana, quién la usa y quién provee los rails, el modelo queda bastante más limpio.</p>
+<p>Yo no definiría Nana como "una wallet para abuelos". La definición económica sería:</p>
+
+<div class="key">Nana is a consumer financial product with a dual-user model.</div>
+
+<ul>
+  <li>El <strong>responsable</strong> adquiere y configura el producto.</li>
+  <li>El <strong>adulto mayor</strong> o persona con limitación lo usa.</li>
+  <li>Nana monetiza principalmente la actividad financiera, y eventualmente una capa premium y B2B2C.</li>
+</ul>
+
+<h2><span class="n">1</span>Los actores</h2>
+<pre class="c">                    NANA
+                      │
+          ┌───────────┴───────────┐
+          │                       │
+    RESPONSABLE               END USER
+    hijo / hija              adulto mayor
+    familiar                 movilidad reducida
+          │                       │
+          │ configura             │ usa
+          │ protege               │ habla
+          │ supervisa             │ confirma
+          │                       │
+          └───────────┬───────────┘
+                      │
+                NANA WALLET
+                      │
+             ┌────────┴────────┐
+             │                 │
+      FINANCIAL RAILS      BLOCKCHAIN
+      on/off-ramp          stablecoins
+      ARS / QR / bills     settlement</pre>
+
+<div class="key">El responsable absorbe la complejidad inicial para que el usuario tenga simplicidad cotidiana.</div>
+
+<h2><span class="n">2</span>Flujo ideal de onboarding</h2>
+<pre class="c">HIJO / RESPONSABLE
+        │
+        ▼
+Descarga Nana
+        │
+        ▼
+Crea una cuenta familiar
+        │
+        ▼
+Invita / onboardea a mamá
+        │
+        ▼
+KYC + creación de wallet
+        │
+        ▼
+Configura Nana
+        │
+        ├── Tomi → nieto
+        ├── Marcos → hijo
+        ├── Edenor → servicio
+        ├── límite diario
+        ├── trusted recipients
+        └── alertas
+        │
+        ▼
+Fondea la cuenta
+ARS → partner → stablecoin
+        │
+        ▼
+────────────────────────────
+     SETUP TERMINADO
+────────────────────────────
+        │
+        ▼
+      MAMÁ
+        │
+        ▼
+"Hey Nana"</pre>
+
+<p>El responsable puede hacer toda la parte horrible una vez. El usuario no debería verla.</p>
+
+<div class="aside">
+  <b>Ojo, esto quedó abierto</b>
+  <p>Si el responsable hace el KYC y fondea, la cuenta es suya y mamá está usando plata ajena. Eso no es independencia. Si la cuenta es de mamá, el KYC lo tiene que hacer ella y el paso más pesado vuelve al usuario final.</p>
+  <p>Hay que elegir cuál de las dos. Probablemente la respuesta defendible sea que la cuenta es de ella, y que el diferencial no es evitarle el trámite sino que el hijo se lo <strong>acompañe</strong>, sentado al lado.</p>
+</div>
+
+<h2><span class="n">3</span>Flujo cotidiano</h2>
+<pre class="c">MAMÁ
+ │
+ │ "Nana, mandale
+ │  $20.000 a Tomi"
+ ▼
+NANA AGENT
+ │
+ ├── entiende intención
+ ├── reconoce "Tomi"
+ ├── encuentra destinatario
+ ├── determina rail
+ ├── prepara transacción
+ └── chequea policies
+ │
+ ▼
+"Nana:
+$20.000 a Tomi,
+tu nieto.
+¿Confirmás?"
+ │
+ ▼
+"Sí"
+ │
+ ▼
+PAYMENT
+ │
+ ▼
+✓ LISTO</pre>
+
+<p>Todo esto debería ser invisible para el usuario:</p>
+<pre class="c">CBU → stablecoin → network → gas → on/off-ramp → address</pre>
+
+<h2><span class="n">4</span>El flujo de protección</h2>
+<p>Pago normal:</p>
+<pre class="c">"Nana, mandale $15.000 a Sofi"
+                │
+                ▼
+       RECIPIENT CONOCIDO
+       MONTO HABITUAL
+       BEHAVIOR NORMAL
+                │
+                ▼
+          USER CONFIRMS
+                │
+                ▼
+               ✓</pre>
+
+<p>Pero:</p>
+<pre class="c">"Nana, mandá $900.000
+a esta cuenta"
+        │
+        ▼
+   NANA RISK LAYER
+        │
+        ├── recipient: NEW
+        ├── amount: UNUSUAL
+        ├── behavior: ANOMALOUS
+        └── policy: > LIMIT
+        │
+        ▼
+   TRANSACTION HELD
+        │
+        ▼
+ RESPONSIBLE ALERTED
+        │
+    ┌───┴────┐
+    ▼        ▼
+ APPROVE   BLOCK</pre>
+
+<div class="key">El responsable no debería aprobar cada pago. Si pasa eso, no devolvimos independencia. Solo interviene por excepción.</div>
+
+<pre class="c">NORMAL ACTIVITY
+User ───────────────────────→ Nana
+
+UNUSUAL ACTIVITY
+User ──→ Nana ──→ Responsible</pre>
+
+<p>Ese para mí es el producto.</p>
+
+<div class="aside">
+  <b>Lo que todavía no resolvimos</b>
+  <p>Quién define qué es excepción. Si lo define el responsable bajando el límite diario, cualquier pago se vuelve excepción y volvimos al control parental por la ventana. Necesitamos un piso que el responsable no pueda bajar.</p>
+  <p>Y el caso difícil no es $900.000 de una. Es $40.000 por semana durante dos meses a un "nuevo número del nieto": chico, repetido, y entrena al detector para aceptarlo.</p>
+</div>
+
+<h2><span class="n">5</span>Entonces, ¿cómo gana plata Nana?</h2>
+<p>Tres capas de monetización, no "cobramos una suscripción y listo".</p>
+<pre class="c">                    NANA REVENUE
+                         │
+          ┌──────────────┼──────────────┐
+          │              │              │
+          ▼              ▼              ▼
+    FINANCIAL        NANA FAMILY       B2B2C
+     ACTIVITY         NETWORK          LICENSING
+   revenue share     subscription     banks/fintechs</pre>
+
+<h2><span class="n">6</span>Fase 1: Nana gratis, revenue financiero</h2>
+<p>La wallet se descarga y se usa gratis. Nana genera actividad y esa actividad pasa por un partner:</p>
+<pre class="c">USER
+ │
+ ▼
+NANA
+ │
+ ├── on-ramp
+ ├── off-ramp
+ ├── FX / conversion
+ ├── QR payment
+ ├── bill payment
+ └── other financial services
+ │
+ ▼
+FINANCIAL PARTNER
+ │
+ ▼
+fee / spread
+ │
+ ├────────→ partner
+ │
+ └────────→ NANA revenue share</pre>
+
+<p>No le cobramos "0,5% Nana fee" al abuelo. Negociamos revenue share con el rail. Cuanto más Nana se usa como cuenta cotidiana, más monetizable se vuelve.</p>
+
+<div class="aside">
+  <b>El número que hay que correr antes de asumir esto</b>
+  <p>Los adultos mayores son de bajo volumen transaccional. Diez pagos de $20.000 ARS por mes son unos USD 150. Con 1% de spread partido al medio con el partner, es menos de un dólar por usuario por mes.</p>
+  <p>Puede ser que estemos midiendo lo que no es. El margen probablemente no esté en el spread de transferencias sino en <strong>la dolarización</strong> (que es lo más rentable que hace un argentino mayor con plata, y nuestros rieles están hechos para eso), en el <strong>float</strong> sobre saldos, en el <strong>pago de servicios recurrente</strong> y eventualmente en <strong>interchange</strong>. Hay que dimensionarlo antes de decidir si esta fase va primera.</p>
+</div>
+
+<h2><span class="n">7</span>Fase 2: Nana Family</h2>
+<div class="key">Nana nunca cobra por estar protegido. Nana cobra por ampliar la red familiar.</div>
+
+<p>Esta es la mejor corrección que le hicimos al modelo. La unidad premium no son features inventadas, son <strong>relaciones familiares adicionales</strong>.</p>
+
+<h3>Gratis</h3>
+<pre class="c">          NANA FREE
+
+             MAMÁ
+              │
+              │  usa · habla · confirma
+              ▼
+         ┌─────────┐
+         │  NANA   │
+         └─────────┘
+              │
+              │  alerta por excepción
+              ▼
+            HIJA
+        1 responsable
+              │
+        ┌─────┴─────┐
+        ▼           ▼
+    APPROVE      BLOCK
+
+  1 persona protegida
+  1 responsable, con poder real
+  protección core completa</pre>
+
+<div class="aside">
+  <b>El responsable gratis tiene poder real, no solo notificaciones</b>
+  <p>Esto es lo más importante del tier gratis y hay que decirlo explícito: <strong>ese responsable aprueba, bloquea, define el límite diario y los trusted recipients.</strong> No es un espectador que recibe avisos.</p>
+  <p>Si no, el tier gratis te deja probar la wallet agéntica pero no te deja probar el diferencial de Nana, que es independencia con protección. Nadie va a pagar por algo que nunca pudo ver funcionando.</p>
+</div>
+
+<div class="aside">
+  <b>Y qué pasa si el único responsable no atiende</b>
+  <p>Con un solo responsable hay un modo de falla obvio: Nana retiene una transacción, avisa, y nadie contesta. La operación queda colgada.</p>
+  <p>Eso <strong>no</strong> se resuelve cobrando por un segundo responsable, porque sería cobrar por seguridad. Se resuelve con una regla de tiempo: pasado un plazo sin respuesta, la transacción se cae y el usuario recibe una explicación clara de por qué y qué hacer. Falla cerrada, nunca abierta.</p>
+  <p>Así la redundancia de personas puede ser paga, porque el modo de falla ya es seguro sin ella.</p>
+</div>
+
+<h3>Nana Family</h3>
+<p>La línea es simple: <strong>un responsable es gratis, varios se pagan.</strong> Y lo mismo del otro lado: una persona protegida es gratis, varias se pagan. Lo que se cobra es la coordinación, nunca la protección.</p>
+<pre class="c">                 MARCOS
+               responsible
+                   │
+          ┌────────┼────────┐
+          ▼        ▼        ▼
+        MAMÁ     PAPÁ     ABUELA
+
+        multiple protected wallets</pre>
+
+<p>Y eventualmente el grafo completo, con roles y permisos distintos por relación:</p>
+<pre class="c">                  FAMILY
+              FINANCIAL GRAPH
+
+             ┌──────MAMÁ──────┐
+             │       │        │
+           HIJO    HIJA     NIETO
+             │       │
+             └─────PAPÁ──────┘
+
+  Laura  → Mamá     admin / responsible
+  Marcos → Mamá     alerts only
+  Tomi   → Abuela   trusted recipient
+  Laura  → Papá     admin / responsible</pre>
+
+<div class="key">One place to coordinate your family's financial care.</div>
+
+<p>El motivo para pagar escala solo con la complejidad familiar. No estamos inventando features artificiales para que paguen: la familia se volvió más compleja y Nana está coordinando más relaciones.</p>
+
+<pre class="c">1 mamá                    2 padres
+1 hijo responsable        3 hermanos responsables
+                          1 abuela
+        ↓                 permisos distintos
+      FREE                        ↓
+                            NANA FAMILY</pre>
+
+<div class="aside">
+  <b>La unidad de cobro tiene que ser la persona protegida, no el responsable</b>
+  <p>Cobrar por cada responsable sería cobrarle más a la familia <strong>por cooperar</strong>. Más ojos sobre la cuenta es mejor para la abuela, así que estaríamos gravando la configuración más segura.</p>
+  <p>Cobrar por cada persona protegida sí: son tres cuentas, tres KYC, tres detectores corriendo. Marcos con tres padres paga tres. Tres hermanos cuidando a una madre pagan uno. Y suena bien dicho en voz alta, que es buen test: "pagás por cada persona que cuidás" se defiende, "pagás por cada hermano que quiere ayudar" no.</p>
+</div>
+
+<table>
+  <tr><th style="width:50%">Nana · gratis</th><th>Nana Family · suscripción</th></tr>
+  <tr>
+    <td>
+      1 persona protegida<br>
+      <strong>1 responsable que aprueba y bloquea</strong><br>
+      Define límites y trusted recipients<br>
+      Protección core: confirmación, límites,<br>trusted recipients, anomalías<br>
+      Agente de voz<br>
+      Pagos
+    </td>
+    <td>
+      Varias personas protegidas<br>
+      <strong>Varios responsables</strong>, con roles distintos<br>
+      Roles y permisos por relación<br>
+      Dashboard familiar compartido<br>
+      Coordinación avanzada<br>
+      Reportes<br>
+      Responsabilidades recurrentes
+    </td>
+  </tr>
+</table>
+
+<p>Esto es mucho más defendible que cobrar diez dólares porque el agente tiene más features. Y el nombre importa: no es <strong>Nana Premium</strong>, es <strong>Nana Family</strong>, porque el objeto que pagás no es una wallet mejor, es expandir la red.</p>
+
+<div class="aside">
+  <b>Lo que hay que medir antes de contar con esto</b>
+  <p>Que la complejidad familiar sea frecuente. El caso modal probablemente sea una madre y un hijo, y ese está entero en el tier gratis. Si el pago solo se dispara con dos o más dependientes, la base convertible puede ser chica.</p>
+  <p>Se mide barato: en las entrevistas a hijos, contar cuántos tienen más de un padre dependiente.</p>
+</div>
+
+<h2><span class="n">8</span>Fase 3: B2B2C</h2>
+<pre class="c">              BANK / FINTECH
+                    │
+                    │ licenses
+                    ▼
+              NANA PLATFORM
+                    │
+        ┌───────────┴───────────┐
+        ▼                       ▼
+  RESPONSIBLE                SENIOR
+      APP                    NANA MODE</pre>
+
+<p>El banco ya tiene users, KYC, ARS, accounts, cards, QR y compliance. Nana aporta el agente de voz, la accesibilidad, las relaciones familiares, las políticas de protección y la ejecución agéntica. Se cobra por usuario activo, licencia enterprise, o revenue share.</p>
+
+<div class="aside">
+  <b>El grafo familiar es el activo, no una feature</b>
+  <p>Un grafo con roles y permisos, con la relación entre personas modelada de verdad, es justamente lo que un banco no puede construir rápido. El banco tiene cuentas, no tiene familias. Eso es mucho más licenciable que "agente de voz", que cualquiera compra hecho.</p>
+  <p>O sea que el mismo activo se monetiza dos veces: como suscripción en Nana Family y como licencia en B2B2C.</p>
+</div>
+
+<div class="aside">
+  <b>La pregunta que nos van a hacer</b>
+  <p>Si el banco pone todo lo demás, ¿por qué Nana es una empresa y no un feature del banco? Conviene tener la respuesta escrita antes de sentarnos con Belo.</p>
+</div>
+
+<h2><span class="n">9</span>Orden temporal</h2>
+<pre class="c">TODAY
+  │
+  ▼
+FREE CONSUMER WALLET
+  │
+  │ validate usage
+  ▼
+TRANSACTION REVENUE
+  │
+  │ validate protection
+  ▼
+NANA FAMILY
+  │
+  │ prove PMF
+  ▼
+B2B2C
+  │
+  ▼
+BANKS / FINTECHS / INSURERS</pre>
+
+<p>No intentaría lanzar las tres monetizaciones simultáneamente.</p>
+
+<div class="aside">
+  <b>Pero este orden es una elección, no una dependencia</b>
+  <p>Nada obliga a que la transaccional vaya primera, y es justo la que menos confianza nos da. La disposición a pagar se testea con un fake door con precio en una semana, sin construir un solo riel. Este orden optimiza por lo más fácil de construir, no por lo más riesgoso de asumir.</p>
+</div>
+
+<h2><span class="n">10</span>Go to market</h2>
+<p>Este es de los descubrimientos más importantes. No adquirís al abuelo, adquirís al responsable.</p>
+<pre class="c">           AD / CONTENT
+                │
+                ▼
+        SON / DAUGHTER
+         age ~35–60
+                │
+                ▼
+        "I need this for
+            my mom."
+                │
+                ▼
+          DOWNLOAD NANA
+                │
+                ▼
+          SET UP MOM
+                │
+                ▼
+             INVITE
+                │
+                ▼
+              MOM
+                │
+                ▼
+         DAILY VOICE USE</pre>
+
+<p>El marketing no sería "¿tenés 78 años? descargá nuestra crypto wallet". Sería:</p>
+<div class="key">Give your parents financial independence without giving up peace of mind.</div>
+
+<h2><span class="n">11</span>El flywheel</h2>
+<pre class="c">RESPONSIBLE
+downloads Nana
+     │
+     ▼
+invites parent
+     │
+     ▼
+parent uses Nana
+     │
+     ▼
+adds family recipients
+     │
+     ▼
+family interacts
+     │
+     ▼
+other family members
+discover Nana
+     │
+     ▼
+another household</pre>
+
+<p>No sé todavía cuánto de esto funcionaría realmente como growth loop, pero vale la pena testearlo temprano porque es barato de instrumentar.</p>
+
+<h2><span class="n">12</span>Qué es Nana en una sola imagen</h2>
+<pre class="c">                 RESPONSIBLE
+                      │
+            setup + protection
+                      │
+                      ▼
+              ┌──────────────┐
+              │              │
+              │     NANA     │
+              │              │
+              │ Voice Agent  │
+              │ Wallet       │
+              │ Protection   │
+              │ Family Graph │
+              │              │
+              └──────┬───────┘
+                     ▲
+                     │
+              voice + confirm
+                     │
+                  END USER
+                     │
+                     ▼
+             FINANCIAL RAILS
+                     │
+        ┌────────────┼────────────┐
+        ▼            ▼            ▼
+       ARS           QR          BILLS
+        ↕
+   STABLECOINS</pre>
+
+<p>Y económicamente:</p>
+<pre class="c">WHO USES IT?          Senior / limited mobility
+WHO SETS IT UP?       Son / daughter / responsible
+WHO MAY PAY?          Responsible / financial partner
+WHO DISTRIBUTES?      Nana initially, banks eventually
+
+HOW NANA MAKES MONEY?
+  1. Financial revenue share
+  2. Nana Family, priced per protected person
+  3. B2B2C licensing</pre>
+
+<div class="key">Nana is a free agentic financial account with a dual-user model: independence for the person using it, and protection for the person who cares for them.</div>
+
+<p>Todavía no afirmaría que la suscripción, el revenue transaccional o el B2B2C es <em>el</em> business model. Esas son las tres hipótesis de monetización.</p>
+<p>Lo que sí parece mucho más definido después de estas conversaciones es <strong>la arquitectura de usuarios y el GTM</strong>. Eso es lo primero que validaría, porque una vez que sepamos quién adopta, quién usa y quién está dispuesto a pagar, el revenue model se vuelve muchísimo menos especulativo.</p>
+
+</body>
+</html>

@@ -1,0 +1,365 @@
+Sí. Yo le pasaría a Mia algo así, pensado específicamente como actualización conceptual para incorporar al documento de modelo, no como pitch externo.
+
+Nana Wallet — actualización de estructura de producto e infraestructura
+
+Después de seguir desarrollando el modelo, la forma más clara de pensar Nana es separar tres capas: el producto que Nana posee, la infraestructura financiera que puede tercerizar y los dos roles de usuario que interactúan con el sistema.
+
+1. Nana no debería ser un wrapper de una wallet existente
+
+La tesis no es construir una interfaz de voz para usuarios que ya tienen crypto.
+
+Nana busca onboardear personas que pueden no tener ningún conocimiento previo de wallets, stablecoins, networks, gas o addresses. Para el usuario, Nana tiene que sentirse como el producto financiero completo.
+
+La abstracción debería ser total:
+
+Usuario
+   ↓
+"Nana, mandale $20.000 a Tomi"
+   ↓
+Nana Agent
+   ↓
+entiende intención
+resuelve destinatario
+chequea permisos/policies
+selecciona el rail
+prepara la operación
+   ↓
+confirmación cuando corresponda
+   ↓
+pago
+
+Todo lo que ocurre debajo, como wallet infrastructure, blockchain, stablecoins, gas, on/off-ramp o settlement, debería permanecer invisible.
+
+2. Dual-user model
+
+Nana tiene dos roles principales.
+
+                         NANA
+                           │
+             ┌─────────────┴─────────────┐
+             │                           │
+        END USER                    RESPONSIBLE
+             │                           │
+     usa principalmente             configura
+        por voz                     supervisa
+       confirma                     protege
+     maneja su dinero             recibe excepciones
+
+El end user inicial es un adulto mayor o una persona con movilidad reducida.
+
+El responsible puede ser un hijo, hija, familiar u otra persona designada.
+
+La hipótesis de GTM es que muchas veces el responsible será quien descubra Nana, acompañe el onboarding y configure inicialmente el producto, mientras que el end user será quien lo utilice cotidianamente.
+
+La complejidad inicial puede ser absorbida o acompañada por alguien de confianza para que después la experiencia diaria sea extremadamente simple.
+
+3. Independence with protection
+
+La protección no puede significar que el responsible tenga que autorizar cada operación.
+
+Si ocurre eso, Nana no devolvió independencia: simplemente digitalizó la dependencia.
+
+El principio debería ser:
+
+The responsible intervenes by exception, not by default.
+
+ACTIVIDAD NORMAL
+User
+  ↓
+Nana
+  ↓
+Execute
+ACTIVIDAD INUSUAL
+User
+  ↓
+Nana
+  ↓
+Protection Engine
+  ↓
+Hold / Escalate
+  ↓
+Responsible
+
+Esto convierte la protección en una capa que acompaña la autonomía en lugar de reemplazarla.
+
+4. Delegated agent execution
+
+Uno de los problemas técnicos centrales pasa a ser permitir que Nana actúe sin darle control irrestricto de los fondos.
+
+La dirección que queremos investigar es una Smart Account con programmable permissions, delegated execution/session keys y multisig escalation.
+
+Conceptualmente:
+
+USER AUTHORITY
+      ↓
+delegated permissions
+      ↓
+NANA AGENT
+      ↓
+┌─────────────────────────────┐
+│ allowed recipients          │
+│ spending limits             │
+│ time / usage policies       │
+│ revocable authority         │
+└─────────────────────────────┘
+      ↓
+within policy?
+   /       \
+ YES        NO / SUSPICIOUS
+  ↓               ↓
+EXECUTE       HOLD / ESCALATE
+                    ↓
+               RESPONSIBLE
+
+El agente no debería poseer libremente la private key.
+
+Su capacidad de actuar debería derivar de una autoridad limitada, explícita y revocable concedida por el usuario.
+
+5. Family Graph
+
+Nana no necesita solamente una agenda de contactos.
+
+Necesita entender las relaciones financieras entre personas.
+
+                     MAMÁ
+              ┌───────┼───────┐
+              │       │       │
+            HIJO     HIJA    NIETO
+
+Cada relación puede contener roles y permisos diferentes:
+
+Marcos → Mamá
+responsible / admin
+Sofi → Mamá
+alerts
+Tomi → Abuela
+trusted recipient
+Laura → Papá
+responsible
+
+A esto lo estamos llamando Family Graph.
+
+Es una representación de:
+
+personas + relaciones + roles + permisos financieros.
+
+Esto puede convertirse en un activo importante de Nana porque las instituciones financieras tradicionalmente modelan cuentas y titulares, pero no necesariamente entienden las relaciones y responsabilidades financieras de una familia.
+
+6. Nana Free vs Nana Family
+
+La seguridad core no debería estar detrás de un paywall.
+
+Un usuario gratuito tiene que poder experimentar la propuesta completa de Nana: autonomía + protección.
+
+Por lo tanto, el modelo base debería incluir al menos una relación real entre end user y responsible, además de las protecciones esenciales.
+
+Nana Family aparece cuando esa relación deja de ser simple y se transforma en una red.
+
+NANA FREE
+1 persona protegida
+1 relación administrativa básica
+protección core
+voice agent
+payments
+NANA FAMILY
+múltiples personas protegidas
+múltiples responsables
+roles diferentes
+permisos por relación
+family dashboard
+coordinación compartida
+family financial graph
+
+La tesis no debería ser:
+
+“Pagá para estar protegido.”
+
+Sino:
+
+Pagá cuando la coordinación financiera de tu familia se vuelve más compleja.
+
+La unidad exacta de pricing todavía debe validarse.
+
+7. El wedge no define necesariamente el mercado final
+
+Nana empieza con:
+
+seniors + people with limited mobility.
+
+Ahí voice-first y delegated financial assistance solucionan una necesidad especialmente fuerte.
+
+Pero la arquitectura es más horizontal.
+
+A futuro podría servir también para:
+
+* menores administrados por sus padres;
+* allowances;
+* familias;
+* personas que necesitan asistencia temporal;
+* delegated financial accounts;
+* otros casos donde alguien necesita autonomía dentro de permisos definidos.
+
+Por eso:
+
+INITIAL WEDGE
+Seniors + limited mobility
+        ↓
+EXPANSION
+Family finance
+        ↓
+POTENTIAL VISION
+Agentic / delegated finance
+
+No deberíamos ampliar el GTM ahora por esta posibilidad. El wedge inicial sigue siendo fundamental para tener un problema concreto.
+
+8. Qué debería poseer Nana
+
+Nana no necesita reconstruir todo el sistema financiero.
+
+La separación que estamos explorando es:
+
+NANA OWNS
+Agent
+Voice UX
+Product experience
+Family Graph
+Protection Engine
+Policies / orchestration
+User relationship
+Brand
+PARTNERS / INFRASTRUCTURE
+Wallet infrastructure
+Stablecoins
+Blockchain settlement
+Fiat on/off-ramp
+KYC infrastructure
+Local payment rails
+QR / bills
+Liquidity
+
+El principio es:
+
+Nana should own the product and user relationship without reinventing every financial rail underneath it.
+
+9. Dos infrastructure paths que estamos evaluando
+
+Hoy tenemos dos caminos principales de ecosistema.
+
+                         NANA
+      Agent + Voice UX + Family Graph
+      Protection Engine + Orchestration
+                           │
+             ┌─────────────┴─────────────┐
+             │                           │
+        TETHER PATH                 CIRCLE PATH
+             │                           │
+            WDK                         Arc
+             │                           │
+           USDT                         USDC
+             │                           │
+       Twin / otros              Ripio / Manteca /
+       providers                 otros providers
+             │                           │
+       local rails                   local rails
+             │                           │
+             └────────── Argentina ──────┘
+
+No deben entenderse como bundles cerrados.
+
+Son paths que estamos explorando para determinar qué combinación ofrece mejor:
+
+* wallet infrastructure;
+* delegated agent execution;
+* stablecoin rails;
+* ARS on/off-ramp;
+* compliance/KYC infrastructure;
+* local payments;
+* costos;
+* soporte del ecosistema;
+* distribución.
+
+Nana debería permanecer suficientemente abstraída como para que el producto no dependa estructuralmente de un único proveedor.
+
+10. Modelo de revenue
+
+Seguimos teniendo tres hipótesis principales, no una conclusión definitiva:
+
+                    NANA REVENUE
+                         │
+          ┌──────────────┼──────────────┐
+          │              │              │
+          ▼              ▼              ▼
+     FINANCIAL        NANA FAMILY      B2B2C
+      ACTIVITY           NETWORK       LICENSING
+    revenue share      subscription     banks /
+    / financial        / family         fintechs
+    services           complexity
+
+Financial activity: revenue share sobre determinados servicios financieros/rails.
+
+Nana Family: suscripción asociada a una estructura familiar más compleja, no a quitar seguridad del tier gratuito.
+
+B2B2C: eventualmente licenciar Nana como agentic accessibility/family layer para bancos, fintechs, wallets u otras instituciones.
+
+Todavía son hipótesis que tenemos que validar.
+
+11. La arquitectura conceptual completa
+
+                    RESPONSIBLE
+                         │
+                 setup + protection
+                         │
+                         ▼
+               ┌──────────────────┐
+               │       NANA       │
+               │                  │
+               │ Agent            │
+               │ Voice UX         │
+               │ Wallet           │
+               │ Protection       │
+               │ Family Graph     │
+               │ Policy Engine    │
+               └────────┬─────────┘
+                        ▲
+                        │
+                voice + intent
+                        │
+                    END USER
+                        │
+                        ▼
+              ABSTRACTION LAYER
+                        │
+             ┌──────────┴──────────┐
+             │                     │
+         TETHER PATH           CIRCLE PATH
+             │                     │
+         WDK / USDT            Arc / USDC
+             │                     │
+         local rails           local rails
+             │                     │
+             └──────────┬──────────┘
+                        ▼
+                     ARS / QR
+                  bills / payments
+
+12. La tesis que queda
+
+Nana no debería definirse simplemente como una wallet por voz para adultos mayores.
+
+El wedge inicial sí es específico, pero la primitive que estamos construyendo es más profunda:
+
+An agentic financial account that allows people to act independently within a trusted, programmable network of relationships and permissions.
+
+Para el usuario:
+
+I can manage my own money.
+
+Para el responsible:
+
+I don’t need to control everything to know they’re protected.
+
+Y para Nana:
+
+Independence with protection.
+
+Esto expande el modelo que ya teníamos: mantiene el dual-user model, el responsible-led GTM y la abstracción de los rails, pero suma como piezas centrales la ejecución delegada, el Family Graph y la separación explícita entre lo que Nana debe poseer y lo que puede tercerizar.  

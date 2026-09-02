@@ -1,0 +1,60 @@
+# Nana Pitch Kit
+
+Shared source of truth for refining Nana's external pitch.
+
+This repository contains the current deck, product model, mission board, landing visual system and original assets. It is intentionally separate from the application repository so the deck can evolve without product-code noise.
+
+## Start here
+
+1. Read [`strategy/MASTER-CONTEXT.md`](strategy/MASTER-CONTEXT.md).
+2. Open [`strategy/PITCH-REFINEMENT-BRIEF.md`](strategy/PITCH-REFINEMENT-BRIEF.md).
+3. Review [`deck/current/Nana-Pitch-Deck-v2.pdf`](deck/current/Nana-Pitch-Deck-v2.pdf).
+4. Edit [`deck/current/Nana-Pitch-Deck-v2.pptx`](deck/current/Nana-Pitch-Deck-v2.pptx).
+5. Use [`pitch/PITCH-SCRIPT.md`](pitch/PITCH-SCRIPT.md) to preserve the spoken narrative.
+6. Use the Mission Board when a product or brand decision is unclear.
+
+## Repository map
+
+| Folder | Purpose |
+| --- | --- |
+| `deck/current/` | Current 16-slide pitch in editable PPTX, shareable PDF and slide PNGs. |
+| `deck/archive/` | Previous deck. Visual and historical reference only. |
+| `deck/source/` | Artifact-tool source and the narrative plan used to generate v2. |
+| `mission-board/` | Internal product constitution: mission, vision, principles and decision filters. |
+| `strategy/` | Product/business model, newest conceptual update and pitch brief. |
+| `pitch/` | Spoken pitch script aligned to the current deck. |
+| `brand/` | Brand voice and visual rules distilled from the landing and mission board. |
+| `assets/` | Logos, Nani, screenshots, social graphics, video and team photos. |
+| `landing-reference/` | Components, CSS and metadata assets from the hybrid landing. |
+
+## Current product definition
+
+Nana is an agentic financial account that lets people act independently inside a trusted, programmable network of relationships and permissions.
+
+Initial wedge: seniors and people with limited mobility.
+
+Core promise: **Independence through voice. Protection when it matters.**
+
+The responsible person intervenes by exception, not by default.
+
+## Important status labels
+
+- **Current:** `strategy/MASTER-CONTEXT.md`, `deck/current/`, `strategy/latest-product-model.txt`, `mission-board/Nana-Mission-Board.pptx`.
+- **Useful background:** the two model PDFs in `strategy/`.
+- **Historical only:** `deck/archive/nana-deck.pdf` and `assets/market/`.
+- **Do not present as decided:** Nana Family pricing, paid conversion, infrastructure provider, transaction thresholds or GTM performance.
+
+## Live references
+
+- Landing: https://nana-wallet-hybrid.vercel.app
+- Web demo: https://nana-wallet-hybrid.vercel.app/app
+- Product repository: https://github.com/rober8b/aleph-hackathon
+
+## Working agreement
+
+- Preserve the product thesis while improving hierarchy, pacing and visual storytelling.
+- Keep assumptions visibly labeled as assumptions or hypotheses.
+- Do not put core protection behind a paywall.
+- Do not define Nana as a crypto wallet for existing crypto users.
+- Do not expose networks, gas, stablecoins or addresses as the product experience.
+- Do not reintroduce the unsupported market arithmetic from the archived deck.

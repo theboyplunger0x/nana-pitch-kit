@@ -1,0 +1,17 @@
+Primary user-authored sources
+
+- docs/deck/nana-deck.pdf
+- docs/business-model/nana-business-model.pdf
+- docs/business-model/nana-modelo.pdf
+- app/apps/nana-wallet/src/routes/index.tsx
+- app/apps/nana-wallet/src/components/HybridLandingIntro.tsx
+- app/apps/nana-wallet/src/styles.css
+- video/src/theme.ts
+- assets/social/*
+- assets/logo/*
+- assets/screenshots-english/*
+- assets/sprites/*
+
+The mission and vision statements are a synthesis of the product thesis in the
+deck and business-model documents. Product, audience, protection and business-
+model language stays close to the wording already used by the team.

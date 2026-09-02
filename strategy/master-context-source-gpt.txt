@@ -1,0 +1,868 @@
+Sí. Para el repo, yo haría un master context document que no sea todavía el pitch deck, sino la fuente de verdad desde la cual cualquier IA o cualquiera del equipo pueda generar deck, pitch script, landing, application, copy o roadmap sin perder toda la evolución que tuvimos.
+
+Te dejo una versión deliberadamente extensa y separando lo validado, la visión y las hipótesis abiertas.
+
+NANA WALLET — MASTER PRODUCT & PITCH CONTEXT
+
+1. What Nana is
+
+Nana Wallet is a voice-first agentic financial account, initially designed for seniors and people with limited mobility.
+
+The core idea is simple:
+
+People shouldn’t have to adapt to financial technology. Financial technology should adapt to them.
+
+Instead of navigating menus, typing addresses, understanding wallets, selecting networks or learning financial interfaces, a user should be able to express intent naturally:
+
+“Hey Nana, send $20 to my grandson.”
+
+Nana understands the intent, identifies the recipient, prepares the financial action, checks the relevant policies, presents what actually matters to the user and executes after the appropriate authorization.
+
+The long-term product is not intended to feel like a crypto wallet.
+
+Stablecoins, blockchain networks, gas, addresses, on/off-ramps and settlement should become infrastructure underneath the experience, not concepts the user needs to understand.
+
+⸻
+
+2. Where the idea came from
+
+Nana did not begin as an abstract thesis about AI agents.
+
+It emerged from several personal experiences that converged during the Aleph Hackathon.
+
+Marcos’ grandmothers
+
+As Marcos’ grandmothers got older, something familiar happened.
+
+The family’s way of protecting them was gradually taking responsibilities away.
+
+Someone else paid bills.
+
+Someone else managed money.
+
+Someone else handled financial decisions.
+
+This reduced some risks, but also gradually reduced their independence.
+
+One of his grandmothers was also the victim of a financial scam.
+
+That made the security problem concrete rather than theoretical.
+
+The insight was:
+
+Protection often becomes control.
+
+Families have legitimate reasons to intervene, particularly because older adults can be vulnerable to scams, but the existing solution is often to remove financial autonomy entirely.
+
+Nana asks whether technology can provide protection without requiring that loss of independence.
+
+⸻
+
+3. Susi
+
+Another experience came from a member of the team who had taught technology to Susi, an older woman with Parkinson’s.
+
+Susi understood what she wanted to do.
+
+The problem wasn’t understanding money.
+
+The problem was interacting with technology.
+
+Traditional payment applications require:
+
+* navigating screens;
+* tapping relatively small controls;
+* typing;
+* selecting recipients;
+* reviewing complex information;
+* moving through multiple interface states.
+
+For someone with limited mobility, reducing five clicks to three does not necessarily solve the underlying problem.
+
+That led to another question:
+
+What if instead of reducing interactions, we rethink which interactions deserve to exist?
+
+⸻
+
+4. The original product insight
+
+Most fintech products compete on reducing friction.
+
+5 interactions
+      ↓
+3 interactions
+      ↓
+2 interactions
+
+Nana asks:
+
+Which interaction actually deserves to exist?
+
+The desired experience is:
+
+"Hey Nana,
+send $20 to my grandson."
+          ↓
+       NANA
+          ↓
+understands intent
+finds grandson
+prepares payment
+          ↓
+"$20 to Tomi.
+Confirm?"
+          ↓
+        "Yes."
+          ↓
+       PAYMENT
+
+The confirmation matters.
+
+The complexity around it doesn’t.
+
+This evolved the original hackathon slogan from simply “zero clicks” toward a more precise principle:
+
+The agent handles complexity. The human retains meaningful control.
+
+⸻
+
+5. Voice is the interface. The agent is the wallet.
+
+This became one of the central product principles.
+
+Nana is not intended to be:
+
+VOICE
+ ↓
+speech-to-text
+ ↓
+traditional wallet UI
+
+It is:
+
+VOICE / INTENT
+      ↓
+     AGENT
+      ↓
+financial action
+
+The agent is not there to explain which button the user should press.
+
+It does the work.
+
+This distinction matters because “agentic wallet” should describe actual agency rather than simply attaching an LLM to a financial interface.
+
+⸻
+
+6. What the first prototype proved
+
+The first Nana prototype was built during the Aleph Hackathon.
+
+It demonstrated the core interaction:
+
+user intent
+    ↓
+agent
+    ↓
+prepare transaction
+    ↓
+user confirmation
+    ↓
+wallet infrastructure
+    ↓
+onchain execution
+
+The prototype used Tether WDK.
+
+Nana executed 7 confirmed transactions on Ethereum Sepolia, ranging from 1 to 20 test USD₮.
+
+The transactions were prepared through the agentic flow and confirmed by the user.
+
+This matters because Nana was not only a Figma prototype or conversational demo.
+
+The basic agent → wallet → transaction loop actually worked.
+
+⸻
+
+7. Hackathon result
+
+Nana Wallet won 2nd place in the Tether WDK track at the Aleph Hackathon.
+
+The hackathon validated neither PMF nor the complete business model.
+
+What it did provide was:
+
+* external product signal;
+* a functioning prototype;
+* technical feasibility for the basic interaction;
+* initial ecosystem interest;
+* a reason to continue developing the idea beyond the weekend.
+
+⸻
+
+8. How Nana itself was discovered
+
+Nana was not the idea the team entered the hackathon with.
+
+The team arrived exploring other payment ideas.
+
+Marcos had even brought a physical POS with the intention of building something around payments.
+
+The team pivoted.
+
+Then pivoted again.
+
+For roughly five hours, the team was still searching for the right problem.
+
+While researching the Wallet Development Kit track and discussing potential applications, the different experiences and technical primitives started connecting.
+
+Older adults.
+
+Susi.
+
+Voice.
+
+Wallets.
+
+Agents.
+
+Family protection.
+
+Payments.
+
+That was the moment Nana emerged.
+
+That’s when we stopped searching and started building.
+
+This history matters because Nana was not a predetermined solution looking for a hackathon track.
+
+The product emerged from the intersection of a real problem and newly available infrastructure.
+
+⸻
+
+9. The second user
+
+One of the most important discoveries after building Nana was that the product does not have only one user.
+
+It has at least two roles.
+
+End user
+
+Initially:
+
+* senior;
+* person with limited mobility;
+* person who benefits from assisted financial interaction.
+
+They want:
+
+Independence.
+
+They primarily:
+
+* speak;
+* express intent;
+* use money;
+* confirm meaningful actions.
+
+Responsible user
+
+Potentially:
+
+* son;
+* daughter;
+* family member;
+* designated responsible person.
+
+They want:
+
+Peace of mind without having to become somebody else’s financial interface.
+
+They may:
+
+* assist with onboarding;
+* configure relationships;
+* configure policies;
+* receive alerts;
+* supervise exceptional activity;
+* intervene when genuinely necessary.
+
+The model therefore becomes:
+
+A dual-user consumer financial product.
+
+The current GTM hypothesis is responsible-led acquisition: the son, daughter or responsible person discovers Nana and helps bring the end user into the system. nana-modelo(1).pdf
+
+⸻
+
+10. The central tension
+
+Nana sits between two undesirable extremes.
+
+FULL AUTONOMY                         FULL CONTROL
+independence                          protection
+but potentially                       but dependency
+high risk
+             \                       /
+              \                     /
+               \                   /
+                    NANA
+          INDEPENDENCE + PROTECTION
+
+The core principle is:
+
+The responsible intervenes by exception, not by default.
+
+If the responsible person has to approve every payment, Nana has not returned independence.
+
+It has simply digitized dependency.
+
+The current model explicitly treats normal activity differently from unusual activity. nana-modelo(1).pdf
+
+⸻
+
+11. Normal transaction
+
+Example:
+
+“Nana, send $20 to Sofi.”
+
+Nana sees:
+
+recipient known
++
+amount normal
++
+behavior normal
++
+within policy
+       ↓
+USER CONFIRMS
+       ↓
+EXECUTE
+
+The responsible person does not need to participate.
+
+⸻
+
+12. Exceptional transaction
+
+Example:
+
+“Nana, send $900 to this new account.”
+
+Potential signals:
+
+new recipient
++
+unusual amount
++
+different behavior
++
+outside policy
+       ↓
+HOLD / ESCALATE
+       ↓
+RESPONSIBLE
+       ↓
+APPROVE / BLOCK
+
+The protection system should therefore behave more like an exception engine than parental control.
+
+⸻
+
+13. The difficult security problem
+
+The obvious suspicious transaction is not actually the hardest case.
+
+A huge transaction to an unknown recipient is easy to flag.
+
+A sophisticated scam may look like:
+
+$40 every week for two months to a “new account belonging to the grandson.”
+
+Each transaction is individually plausible.
+
+The pattern is what matters.
+
+Therefore Nana’s long-term protection architecture potentially combines:
+
+* deterministic policies;
+* spending limits;
+* trusted recipients;
+* behavioral analysis;
+* anomaly detection;
+* contextual reasoning;
+* escalation;
+* human oversight.
+
+This is still an area of product and technical research, not a solved component.
+
+⸻
+
+14. Agent autonomy
+
+The first prototype required explicit confirmation before execution.
+
+The next technical question is harder:
+
+Can Nana safely perform routine financial actions within authority delegated by the user without requiring manual cryptographic signing for every transaction and without giving the agent unrestricted control of the wallet?
+
+The direction currently being explored is:
+
+Smart Account + programmable permissions + delegated execution/session keys + multisig escalation.
+
+Conceptually:
+
+USER
+ ↓
+delegates bounded authority
+ ↓
+NANA AGENT
+ ↓
+allowed recipient?
+within spending limit?
+within policy?
+ ↓
+YES ───────────────→ EXECUTE
+NO / EXCEPTION
+ ↓
+HOLD
+ ↓
+additional authorization
+
+The agent should never simply possess unrestricted authority over the user’s funds.
+
+Authority should be:
+
+* bounded;
+* explicit;
+* revocable;
+* policy-constrained.
+
+⸻
+
+15. Family Graph
+
+The product eventually needs more than a contact list.
+
+Nana needs to understand financial relationships between people.
+
+Example:
+
+                  MAMÁ
+            ┌──────┼──────┐
+            │      │      │
+          HIJO    HIJA   NIETO
+
+But the edges carry meaning:
+
+Marcos → Mamá
+responsible / admin
+Sofi → Mamá
+alerts
+Tomi → Abuela
+trusted recipient
+Laura → Papá
+responsible
+
+This is the Family Graph:
+
+People + relationships + roles + financial permissions.
+
+The hypothesis is that this could become one of Nana’s more defensible assets.
+
+Traditional financial institutions understand accounts.
+
+Nana could understand families and delegated financial relationships.
+
+⸻
+
+16. Family Graph beyond seniors
+
+The initial wedge does not necessarily define the final market.
+
+The same primitive potentially applies to:
+
+adult child → senior parent
+parent → minor
+siblings → parents
+guardian → dependent
+family → shared financial responsibilities
+
+This creates a broader potential direction around family finance and delegated financial autonomy.
+
+However, this is expansion logic, not the current GTM.
+
+The current wedge should remain focused.
+
+⸻
+
+17. Initial wedge
+
+Nana initially targets:
+
+Seniors and people with limited mobility.
+
+This is strategically important.
+
+For a typical 25-year-old, voice-controlled finance may be convenience.
+
+For someone with Parkinson’s or severe mobility limitations, it can be accessibility.
+
+The initial wedge therefore gives Nana:
+
+* a clear user;
+* a real problem;
+* an emotional narrative;
+* strong differentiation;
+* a reason why voice and agents are necessary rather than gimmicks.
+
+Potential expansion should not dilute that initial positioning prematurely.
+
+⸻
+
+18. Go-to-market hypothesis
+
+The current hypothesis is:
+
+Don’t acquire the grandparent. Acquire the responsible person.
+
+Conceptually:
+
+CONTENT / AD
+      ↓
+SON / DAUGHTER
+      ↓
+"I need this for my mom."
+      ↓
+DOWNLOAD NANA
+      ↓
+assist onboarding
+      ↓
+invite / configure
+      ↓
+PARENT
+      ↓
+DAILY VOICE USE
+
+Potential messaging:
+
+Give your parents financial independence without giving up peace of mind.
+
+This is a hypothesis that needs customer validation, not a proven acquisition channel. nana-modelo(1).pdf
+
+⸻
+
+19. Onboarding tension
+
+There is an unresolved product issue.
+
+If the responsible person performs KYC and owns/funds the wallet, then the money may technically belong to the responsible person.
+
+That undermines the independence thesis.
+
+If the wallet belongs to the end user, the end user must participate in onboarding/KYC.
+
+The likely direction is therefore not:
+
+The responsible person does everything instead of them.
+
+But:
+
+The responsible person accompanies the difficult setup once so that the end user gets simplicity every day.
+
+This remains an open product/legal question. nana-modelo(1).pdf
+
+⸻
+
+20. Nana Free
+
+The core security proposition cannot be premium.
+
+A free Nana account should demonstrate the complete core loop:
+
+independence + protection.
+
+Core protection may include:
+
+* meaningful confirmation;
+* basic policies;
+* trusted recipients;
+* anomaly detection;
+* responsible relationship;
+* alerts.
+
+If protection only exists in premium, free Nana becomes merely a voice wallet.
+
+That would hide the actual differentiation behind a paywall.
+
+⸻
+
+21. Nana Family
+
+The premium hypothesis is not:
+
+Pay for more security.
+
+It is:
+
+Pay when family financial coordination becomes more complex.
+
+Conceptually:
+
+NANA FREE
+one protected person
+basic responsible relationship
+voice agent
+payments
+core protection
+NANA FAMILY
+multiple protected people
+multiple responsible people
+roles
+permissions
+shared dashboard
+family coordination
+family financial graph
+
+The exact pricing unit remains unvalidated.
+
+One hypothesis is pricing around additional protected people rather than additional responsible contacts, because charging for additional responsible contacts could penalize safer family coordination.
+
+The current model explicitly treats Nana Family as expansion of the family network rather than security as an upsell. nana-modelo(1).pdf
+
+⸻
+
+22. Business model hypotheses
+
+Nana does not yet have a validated business model.
+
+There are currently three main monetization hypotheses.
+
+A. Financial activity
+
+Nana originates financial activity:
+
+* on-ramp;
+* off-ramp;
+* FX/conversion;
+* payments;
+* QR;
+* bill payments;
+* other financial services.
+
+Partners generate fees/spread and Nana potentially receives revenue share.
+
+USER
+ ↓
+NANA
+ ↓
+FINANCIAL PARTNER
+ ↓
+financial activity
+ ↓
+revenue share
+
+This needs unit-economic validation because seniors may have relatively low transaction volume. nana-modelo(1).pdf
+
+B. Nana Family
+
+Subscription around expanded family coordination / Family Graph.
+
+C. B2B2C
+
+Banks, fintechs, wallets or insurers could eventually license Nana’s agentic accessibility / protection / family layer.
+
+Potential models:
+
+* per active user;
+* enterprise license;
+* revenue share.
+
+These remain hypotheses rather than conclusions.
+
+⸻
+
+23. The B2B2C question
+
+If a bank already provides:
+
+* accounts;
+* KYC;
+* ARS;
+* cards;
+* QR;
+* compliance;
+
+why is Nana a company rather than a feature?
+
+This is an important strategic question.
+
+The current answer being explored is that Nana’s proprietary product layer is not merely voice.
+
+It is the combination of:
+
+Agent
++
+Family Graph
++
+Protection Engine
++
+Delegated permissions
++
+Accessible UX
++
+User relationship
+
+The Family Graph in particular may become more defensible than the voice agent itself.
+
+⸻
+
+24. What Nana should own
+
+Nana should own:
+
+Product experience
+Brand
+Voice UX
+Agent
+Intent orchestration
+Family Graph
+Protection Engine
+Policy experience
+User relationship
+
+Nana does not necessarily need to own:
+
+Blockchain
+Stablecoin issuance
+Fiat rails
+Liquidity
+KYC infrastructure
+On/off-ramp infrastructure
+QR network
+Bill-payment infrastructure
+Settlement rails
+
+Principle:
+
+Own the product and the user relationship. Don’t reinvent every financial rail.
+
+⸻
+
+25. Infrastructure abstraction
+
+Nana should ideally be capable of sitting above multiple infrastructure providers.
+
+Current conceptual architecture:
+
+                  NANA
+Agent
+Voice UX
+Family Graph
+Protection Engine
+Transaction orchestration
+User relationship
+                    ↓
+            ABSTRACTION LAYER
+           /                  \
+     TETHER PATH          CIRCLE PATH
+          ↓                    ↓
+         WDK                  Arc
+          ↓                    ↓
+        USDT                  USDC
+          ↓                    ↓
+   local providers       local providers
+          ↓                    ↓
+             ARGENTINA
+
+These are exploratory ecosystem paths, not fixed bundles.
+
+⸻
+
+26. Tether path
+
+Potential components:
+
+NANA
+ ↓
+Tether WDK
+ ↓
+USDT
+ ↓
+Twin / other infrastructure
+ ↓
+local rails
+
+WDK is particularly relevant because the original prototype already used it successfully.
+
+The team has established contact with WDK/Tether after the hackathon.
+
+Tether currently does not appear to have a dedicated very-early-stage acceleration/grant program for Nana, but the WDK team is open to continued building and ecosystem follow-up.
+
+⸻
+
+27. Circle / Arc path
+
+Potential architecture:
+
+NANA
+ ↓
+Arc
+ ↓
+USDC
+ ↓
+Ripio / Manteca / other local provider
+ ↓
+ARS / local rails
+
+The team is also exploring Circle/Arc because of an upcoming acceleration opportunity and existing relationships in the Arc ecosystem.
+
+Again, Nana should not become structurally dependent on Arc simply because an accelerator exists.
+
+The correct infrastructure should be selected according to product requirements.
+
+⸻
+
+28. Local infrastructure
+
+Potential local infrastructure partners currently being explored include:
+
+* Twin;
+* Belo;
+* Ripio;
+* Manteca;
+* others.
+
+The relevant questions are:
+
+* ARS on/off-ramp;
+* KYC;
+* stablecoin conversion;
+* QR;
+* payments;
+* bill payments;
+* compliance infrastructure;
+* APIs;
+* wallet integration;
+* non-custodial architecture;
+* distribution.
+
+The goal is not simply to collect partnerships.
+
+It is to determine:
+
+What does Nana need to build, and what should already-existing financial infrastructure solve for us?
+
+⸻
+
+29. The product architecture
+
+                    RESPONSIBLE
+                         │
+                 setup + protection
+                         │
+                         ▼
+              ┌────────────────────�
